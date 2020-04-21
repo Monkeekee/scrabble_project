@@ -1,0 +1,44 @@
+Structures :
+-Pool de lettres : dictionnaire (clé: nombre de lettres/couple (points;quantité dans le sac)
+-Plateau (Matrice de case)
+-case (position , états : occupé/bonus)
+-joueur (banc de lettres) : liste de lettres/nombre de points/ordre de passage
+-structure permettant de faire des suggestion de mots à partir de lettre
+-Partie (plateau / sac / 2,3 ou 4 bancs actifs de couleurs différentes)
+
+
+
+Fonctionnalités :
+-mode facile : verification des mots avant de poser et suggestion de mot
+-comptage des points
+-Vérification orthographique du mot posé
+-echanger des lettres
+-afficher le nombre de lettres du sac
+-bouton passer
+-bouton tourner
+-changer une lettre de place sur le banc
+-trier par ordre alphabetique les lettres du banc
+-selection mot
+-drag and drop du mot selectionner sur le plateau
+-Ordre aléatoire en debut de partie
+-IA cultivé (mot le plus long) 2eme
+-IA tryhard (gros score) 3eme ++
+-IA basique (mot aléatoire) 1er
+-sauvegarde auto (fichier de sauvegarde qui garde la partie en cours)
+-volet déroulant avec plusieurs parties en cours
+-bouton "nouvelle partie"
+-mettre fin à la partie
+-piocher lettre
+
+
+QUESTIONS :
+-Suppression des mots de plus de 15 lettres ?
+
+
+Vue:
+-banc de lettre : panel avec des carrés avec lettre et points translatable en drag and drop
+-bouton jouer/passer/défausse
+-banc de la couleur du joueur
+
+
+
