@@ -1,10 +1,23 @@
 package scrabble_1;
 
+
 public class Modele {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//ejfhytrzuhifbd
+	public Dictionnaire dico;
+	//public Partie partie;
+	
+	
+	
+	
+	
+	public Modele() {
+		String[] dicos = {"./dico_a-g.txt","./dico_h-z.txt"};
+		this.dico = new Dictionnaire(dicos);
 	}
+	
+
+	
+	
+
 
 }
