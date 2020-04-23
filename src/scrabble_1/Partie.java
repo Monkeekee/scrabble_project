@@ -33,14 +33,10 @@ public class Partie {
 	static int[] points = {1,3,3,2,1,4,2,4,1,8,10,1,2
 			,1,1,3,8,1,1,1,1,4,10,10,10,10,0};
 	
-	public Map<Character,Integer> Sac; //faire marcher
+	public Map<Character,Integer> Sac;
+	public Map<Character,Integer> PtsLettre;
 	
 	
-	Sac = new HashMap<Character,Integer>();
-	
-	for (int i=0; i<= 26; i++) {
-		Sac.put(lettres[i], quantite[i]);
-	}
 	
 	
 	
@@ -53,6 +49,17 @@ public class Partie {
 	
 	public Partie(int NbrJ) {
 		this.NbrJoueur = NbrJ;
+		this.Sac = new HashMap<Character,Integer>();
+		this.PtsLettre = new HashMap<Character,Integer>();
+	
+		for (int i=0; i<= 26; i++) {
+			Sac.put(lettres[i], quantite[i]);
+			PtsLettre.put(lettres[i], points[i]);
+		}
+		
+		for (int i=0 ; i < NbrJ ; i++) {
+			
+		}
 	}
 	
 	
