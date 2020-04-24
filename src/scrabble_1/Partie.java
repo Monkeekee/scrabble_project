@@ -1,9 +1,10 @@
 package scrabble_1;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Partie {
+public class Partie implements Serializable {
 	 
 	
 	public int NbrJoueur;
