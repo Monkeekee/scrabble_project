@@ -1,3 +1,4 @@
+package scrabble_1;
 import java.awt.Color;
 import java.awt.Graphics;
 
