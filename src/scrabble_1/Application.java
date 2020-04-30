@@ -11,6 +11,11 @@ public class Application {
 		Vue v = new Vue(c);  //vue
 		m.addObserver(v);
 		
+		
+		
+		
+		//m.newPartie(2);
+		
 		//System.out.println(m.dico); 
 		//System.out.println(m.dico.existe("claqua")); //assez reactif
 		

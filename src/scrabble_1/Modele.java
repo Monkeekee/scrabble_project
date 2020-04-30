@@ -13,11 +13,28 @@ import java.util.Observable;
 
 public class Modele extends Observable{
 	
+	public int NbJ;
 	public ArrayList<Partie> parties;
 	File fichier = new File("parties.xml");
 	
 	public Dictionnaire dico;
-	//public Partie partie;
+	public Partie partieEC;  //partie en cours
+	
+	public static int[][] Plateau = {{4,0,0,1,0,0,0,4,0,0,0,1,0,0,4}
+									,{0,2,0,0,0,3,0,0,0,3,0,0,0,2,0}
+									,{0,0,2,0,0,0,1,0,1,0,0,0,2,0,0}
+									,{1,0,0,2,0,0,0,1,0,0,0,2,0,0,1}
+									,{0,0,0,0,2,0,0,0,0,0,2,0,0,0,0}
+									,{0,3,0,0,0,3,0,0,0,3,0,0,0,3,0}
+									,{0,0,1,0,0,0,1,0,1,0,0,0,1,0,0}
+									,{4,0,0,1,0,0,0,-1,0,0,0,1,0,0,4}
+									,{0,0,1,0,0,0,1,0,1,0,0,0,1,0,0}
+									,{0,3,0,0,0,3,0,0,0,3,0,0,0,3,0}
+									,{0,0,0,0,2,0,0,0,0,0,2,0,0,0,0}
+									,{1,0,0,2,0,0,0,1,0,0,0,2,0,0,1}
+									,{0,0,2,0,0,0,1,0,1,0,0,0,2,0,0}
+									,{0,2,0,0,0,3,0,0,0,3,0,0,0,2,0}
+									,{4,0,0,1,0,0,0,4,0,0,0,1,0,0,4}};
 	
 	
 	
@@ -28,20 +45,21 @@ public class Modele extends Observable{
 		this.dico = new Dictionnaire(dicos);
 		
 		XMLDecoder decoder = null;
-		try {
-			FileInputStream fis = new FileInputStream(fichier);
-			BufferedInputStream bis = new BufferedInputStream(fis);
-			decoder = new XMLDecoder(bis);
-			
-			this.parties = (ArrayList<Partie>) decoder.readObject();
-			
-		}catch (Exception e) {
-			throw new RuntimeException("Chargement des donn�es impossible");
-		}finally {
-			if (decoder != null) decoder.close();
+		if (this.fichier.exists()) {		
+			try {
+				FileInputStream fis = new FileInputStream(fichier);
+				BufferedInputStream bis = new BufferedInputStream(fis);
+				decoder = new XMLDecoder(bis);
+				
+				this.parties = (ArrayList<Partie>) decoder.readObject();
+				
+				}catch (Exception e) {
+					throw new RuntimeException("Chargement des donn�es impossible");
+				}finally {
+					if (decoder != null) decoder.close();
+			}
 		}
-		
-		}
+	}
 	
 	public void enregistrer() {
 		XMLEncoder encoder = null;
@@ -66,9 +84,18 @@ public class Modele extends Observable{
 	public void setParties(ArrayList<Partie> parties) {
 		this.parties = parties;
 	}
+	
+	public void newPartie(int NbJ) {
+		this.NbJ = NbJ;
+		this.partieEC = new Partie(this.NbJ);
+		
+	}
 
 	
-	public void changeEtat(Integer e) {
+	
+	
+	
+	public void changeEtat(Integer e) { //pour communiquer avec la vue de tout changement du modele
 		this.setChanged();
 		this.notifyObservers(e);
 	}

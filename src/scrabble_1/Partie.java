@@ -1,29 +1,16 @@
 package scrabble_1;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Partie implements Serializable {
-	 
+	
+	private static final long serialVersionUID = 123L;
 	
 	public int NbrJoueur;
 	public int[] TableauScore;
-	public static int[][] Plateau = {{4,0,0,1,0,0,0,4,0,0,0,1,0,0,4}
-									,{0,2,0,0,0,3,0,0,0,3,0,0,0,2,0}
-									,{0,0,2,0,0,0,1,0,1,0,0,0,2,0,0}
-									,{1,0,0,2,0,0,0,1,0,0,0,2,0,0,1}
-									,{0,0,0,0,2,0,0,0,0,0,2,0,0,0,0}
-									,{0,3,0,0,0,3,0,0,0,3,0,0,0,3,0}
-									,{0,0,1,0,0,0,1,0,1,0,0,0,1,0,0}
-									,{4,0,0,1,0,0,0,-1,0,0,0,1,0,0,4}
-									,{0,0,1,0,0,0,1,0,1,0,0,0,1,0,0}
-									,{0,3,0,0,0,3,0,0,0,3,0,0,0,3,0}
-									,{0,0,0,0,2,0,0,0,0,0,2,0,0,0,0}
-									,{1,0,0,2,0,0,0,1,0,0,0,2,0,0,1}
-									,{0,0,2,0,0,0,1,0,1,0,0,0,2,0,0}
-									,{0,2,0,0,0,3,0,0,0,3,0,0,0,2,0}
-									,{4,0,0,1,0,0,0,4,0,0,0,1,0,0,4}};
 	
 	static char[] lettres = {'a','b','c','d','e','f','g','h','i','j','k','l','m'
 			,'n','o','p','q','r','s','t','u','v','w','x','y','z',' '};
@@ -38,7 +25,7 @@ public class Partie implements Serializable {
 	public Map<Character,Integer> PtsLettre;
 	
 	
-	
+	public ArrayList<ArrayList<cell>> plateau = new ArrayList<>();
 	
 	
 	
@@ -58,9 +45,40 @@ public class Partie implements Serializable {
 			PtsLettre.put(lettres[i], points[i]);
 		}
 		
-		for (int i=0 ; i < NbrJ ; i++) {
+		for (int i=0 ; i < NbrJ ; i++) {//pour chaque joueur faire...
 			
 		}
+		
+		for (int i = 0; i <15 ; i++) { //initialisation des cases du plateau
+			ArrayList<cell> e = new ArrayList<>();
+			this.plateau.add(e);
+			//System.out.println(i);
+			
+			
+			for (int j = 0 ; j<15 ; j++) {
+				//System.out.println(j);
+				e.add(new cell(Modele.Plateau[i][j])); //la value est déterminee par le Plateau de Modèle
+			}
+			
+		}
+		
+		//System.out.println(this);
+	}
+	
+	public String toString() {
+		String res = Integer.toString(this.NbrJoueur) + " ";
+		
+		for (ArrayList<cell> l : this.plateau) { //initialisation des cases du plateau
+			res = res +"\n";
+			
+			for (cell c : l) {
+				//res = res + Integer.toString(c.value);
+				res = res + c.toString();
+				//la value est déterminee par le Plateau de Modèle
+			}
+		}
+		
+		return res;
 	}
 	
 	
