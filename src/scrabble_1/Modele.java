@@ -8,8 +8,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Modele {
+
+public class Modele extends Observable{
 	
 	public ArrayList<Partie> parties;
 	File fichier = new File("parties.xml");
@@ -34,7 +36,7 @@ public class Modele {
 			this.parties = (ArrayList<Partie>) decoder.readObject();
 			
 		}catch (Exception e) {
-			throw new RuntimeException("Chargement des données impossible");
+			throw new RuntimeException("Chargement des donnï¿½es impossible");
 		}finally {
 			if (decoder != null) decoder.close();
 		}
@@ -51,7 +53,7 @@ public class Modele {
 			encoder.writeObject(this.parties);
 			encoder.flush();
 		}catch (final java.io.IOException e) {
-			throw new RuntimeException("Ecriture des données impossible");
+			throw new RuntimeException("Ecriture des donnï¿½es impossible");
 		}finally {
 			if (encoder != null) encoder.close();
 		}
@@ -66,7 +68,10 @@ public class Modele {
 	}
 
 	
-	
+	public void changeEtat(Integer e) {
+		this.setChanged();
+		this.notifyObservers(e);
+	}
 
 
 }

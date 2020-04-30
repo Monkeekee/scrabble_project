@@ -1,7 +1,21 @@
 package scrabble_1;
 
-//import javafx
+import java.util.Observable;
+import java.util.Observer;
 
-public class Vue {
+import javax.swing.JFrame;
+
+
+public class Vue extends JFrame implements Observer{
+
+	public Vue(Controleur c) {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		Integer etat = (Integer)arg;
+	}
 
 }

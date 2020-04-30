@@ -1,10 +1,15 @@
 package scrabble_1;
 
-public class Controleur {
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
-	public static void main(String[] args) {
+public class Controleur implements ItemListener{ //on implemente tous les ecouteurs ici
+
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
