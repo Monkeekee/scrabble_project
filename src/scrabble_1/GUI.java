@@ -1,4 +1,6 @@
+package scrabble_1;
 import javax.swing.*;
+
 import java.awt.Color;
 import java.util.*;
 import java.awt.*;
@@ -8,17 +10,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import java.util.ArrayList;
+
 public class GUI extends JFrame  {
 
 	int spacing=1;
 	int cellsize=60;
-	
-	public int mx=-100;
-	public int my=-100;
-	
-	public int cx=-100;
-	public int cy=-100;
-	
+		
 	int mcx=-1;
 	int mcy=-1;
 	
@@ -26,27 +24,28 @@ public class GUI extends JFrame  {
 	
 	Color CouleurJoeur = Color.MAGENTA;
 	
-	char[] main1 = {'l' , 'a' , 'b' , 'c' , 'd' , 'e','g','j','t'};
+	char[] main1 = {'l' , 'a' , 'b' , 'c' , 'd' , 'e','g','j'};
 	
-	Color[] colors = {Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};
+	Color[] colors = {Color.BLACK,Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};
 
     int[][] grid= {
-		{2,0,0,4,0,0,0,2,0,0,0,4,0,0,2},
-		{0,1,0,0,0,3,0,0,0,3,0,0,0,1,0},
-		{0,0,1,0,0,0,4,0,4,0,0,0,1,0,0},
-		{0,0,0,1,0,0,0,4,0,0,0,1,0,0,0},
-		{4,0,0,0,1,0,0,0,0,0,1,0,0,0,4},
-		{0,3,0,0,0,3,0,0,0,3,0,0,3,0,0},
-		{0,0,4,0,0,0,4,0,4,0,0,4,0,0,0},
-		{2,0,0,4,0,0,0,1,0,0,4,0,0,0,2},
-		{0,0,4,0,0,0,4,0,4,0,0,4,0,0,0},
-		{0,3,0,0,0,3,0,0,0,3,0,0,3,0,0},
-		{0,0,0,0,1,0,0,0,0,0,1,0,0,0,0},
-		{4,0,0,1,0,0,0,4,0,0,0,1,0,0,4},
-		{0,0,1,0,0,0,4,0,4,0,0,0,1,0,0},
-		{0,1,0,0,0,3,0,0,0,3,0,0,0,1,0},
-		{2,0,0,4,0,0,0,2,0,0,0,4,0,0,2}
+		{3,1,1,5,1,1,1,3,1,1,1,5,1,1,3},
+		{1,2,1,1,1,4,1,1,1,4,1,1,1,2,1},
+		{1,1,2,1,1,1,5,1,5,1,1,1,2,1,1},
+		{1,1,1,2,1,1,1,5,1,1,1,2,1,1,1},
+		{5,1,1,1,2,1,1,1,1,1,2,1,1,1,5},
+		{1,4,1,1,1,4,1,1,1,4,1,1,4,1,1},
+		{1,1,5,1,1,1,5,1,5,1,1,5,1,1,1},
+		{3,1,1,5,1,1,1,2,1,1,5,1,1,1,3},
+		{1,1,5,1,1,1,5,1,5,1,1,5,1,1,1},
+		{1,4,1,1,1,4,1,1,1,4,1,1,4,1,1},
+		{1,1,1,1,2,1,1,1,1,1,2,1,1,1,1},
+		{5,1,1,2,1,1,1,5,1,1,1,2,1,1,5},
+		{1,1,2,1,1,1,5,1,5,1,1,1,2,1,1},
+		{1,2,1,1,1,4,1,1,1,4,1,1,1,2,1},
+		{3,1,1,5,1,1,1,3,1,1,1,5,1,1,3}
 		};
+
     
     JButton BEnd = new JButton();
     JButton BNext = new JButton();
@@ -64,6 +63,7 @@ public class GUI extends JFrame  {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		
+
 		Board board= new Board();
 		this.setContentPane(board);
 		
@@ -88,65 +88,91 @@ public class GUI extends JFrame  {
 		board.add(BNext);
 		board.add(BPioche);
 		board.add(Bsupp);
-	}
-	
-
-
-public class Board extends JPanel{
-	
-
-	public void paintComponent(Graphics g ) {
-			
-			g.setColor(Color.LIGHT_GRAY);
-			g.fillRect(899, 600, 1500-899, 930-600); //partie lettre
-			g.setColor(Color.gray);
-			g.fillRect(899, 300, 1500-899, 600-300);//partie button
-			g.setColor(Color.cyan);
-			g.fillRect(899, 0, 1500-899, 300);//partie score
-			g.setColor(Color.red);
-			for (int i=0;i<15;i++) {
-				for (int j=0 ;j<15;j++) {
-					g.setColor(colors[(grid[i][j])]);
-					g.fillRect(spacing + i*cellsize, spacing + j*cellsize,cellsize-2*spacing,  cellsize-2*spacing);
-			
-			int cpt=0;
-			int x=900;
-			int y=700;
-			int cont=0;
-
-			while (cpt != main1.length)
-				{
-					if (x+cont*85 > 1450){
-						x=900;
-						y=800;
-						cont=0;
-					}
-					
-					
-					g.setColor(Color.YELLOW);
-					g.fillRect(x+cont*85, y, 75,75);
-					g.setFont(new Font("TimesRoman", Font.PLAIN,25)); 
-					g.setColor(CouleurJoeur);
-					g.drawString(Character.toString(main1[cpt]), (x+cont*85 +37), (y+75 -37));
-					//System.out.println("X: " + 915 + 10*cpt + ", CPT=" + cpt);
-					cpt=cpt+1;
-					cont=cont+1;
-					
-
-				}
-
-				
-				}
-	
-			}
-		}
-			
 		
-	public void paintleter(Graphics g,int ord , int abs, char let , Color color) {
-
-		g.setColor(color);
-		g.drawString(Character.toString(let), (abs+10)/2, (ord+10)/2);
 	}
+
+	
+
+class Board extends JPanel{
+
+	public cell temp1,temp2 ;
+	public ArrayList<cell> mainC = new ArrayList<cell>();
+	public ArrayList<ArrayList<cell>> grid1;
+
+
+	
+	public Board() {
+
+		ArrayList<ArrayList<cell>> grid1 = new ArrayList<ArrayList<cell>>();
+		this.grid1=grid1;
+		
+		for (int i=0;i<15;i++) {
+			ArrayList<cell> line = new ArrayList<cell>();
+			for (int j=0 ;j<15;j++) {
+				line.add(new cell(spacing + i*cellsize,spacing + j*cellsize,' ',grid[i][j],colors[grid[i][j]],cellsize));
+				}
+			this.grid1.add(line);
+		
+		}
+		System.out.println("CONSTRU matrice:"  + this.grid1);
+
+	}
+	public void paintComponent(Graphics g) {		
+		this.pPart(g);
+		this.pBoard(g);
+		this.drawMain(g);	
+
+		}
+	
+	
+	public void pPart(Graphics g) {
+		g.setColor(Color.LIGHT_GRAY);
+		g.fillRect(899, 600, 1500-899, 930-600); //partie lettre
+		g.setColor(Color.gray);
+		g.fillRect(899, 300, 1500-899, 600-300);//partie button
+		g.setColor(Color.cyan);
+		g.fillRect(899, 0, 1500-899, 300);//partie score
+		g.setColor(Color.red);
+	}
+	
+	public void pBoard(Graphics g){
+		for (int i = 0; i < this.grid1.size(); i++)
+		{
+		    for (int j = 0; j < this.grid1.get(i).size(); j++)
+		    {
+		    	cell cellule=this.grid1.get(i).get(j);
+		    	cellule.paintCell1(g );
+		    } 
+		}
+	}
+	
+	public void createCellMain(){
+		int size=75;
+		int i=0;
+		int x=900;
+		int y=700;
+		for (char c : main1) {
+			mainC.add(new cell(x+i*size,y,c,2,Color.YELLOW,size));
+			i=i+1;
+		}
+	
+		
+	}
+	public void drawMain(Graphics g) {
+		this.createCellMain();
+		for(cell cellule: mainC) {
+			cellule.paintCell1(g );
+			cellule.paintLetter(g, CouleurJoeur);
+		}
+	}
+	public void drawClick(int i,int j) {
+		temp1=this.grid1.get(i).get(j);
+		//temp1.selec=!(temp1.selec);
+		temp1.color=Color.BLACK;
+		this.grid1.get(i).set(j,temp1);
+	}
+
+
 	
 }
 	
@@ -162,59 +188,61 @@ public class Move implements MouseMotionListener{
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 
-		mx = e.getX();
-		my = e.getY();
-		//System.out.println("X: " + mx + ", Y:" + my);
+
 	}
 	
 	}
 public class Click implements MouseListener{
 
+	
 		@Override
-		public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
+		Board plato=new Board();
+		cell selec;
+		int cx = e.getX();
+		int cy = e.getY();
+		int mcx=cx/60;
+		int mcy=(cy-25)/60;
+		if (0<=cx && cx<=900 && 0<=cy && cy<=925) {
+			System.out.println("matrice:"  +mcx + ","+ mcy);
+			plato.drawClick(mcx, mcy);
 			
-			cx = e.getX();
-			cy = e.getY();
-			int mcx=cx/60;
-			int mcy=(cy-25)/60;
-			if (0<=cx && cx<=900 && 0<=cy && cy<=925) {
-				
-				grid[mcx][mcy]=5;
+			
 
-				System.out.println("matrice:"  +cx/60 + ","+ (cy-25)/60);
+
 				
 				
 				
 			}
-			System.out.println("mouse clicked:" + cx +","+ cy);
+
 		}
 
-		@Override
-		public void mouseEntered(MouseEvent arg0) {
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
 			// TODO Auto-generated method stub
 			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-	
 	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+	}
+	
+}
 public class Keyboard implements KeyListener {
 
 	@Override
@@ -242,5 +270,6 @@ public class Keyboard implements KeyListener {
 	}
 
 }
+
 }
 
