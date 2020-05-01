@@ -36,13 +36,14 @@ public class Modele extends Observable{
 									,{0,2,0,0,0,3,0,0,0,3,0,0,0,2,0}
 									,{4,0,0,1,0,0,0,4,0,0,0,1,0,0,4}};
 	
-	
+	public cell[][] PlateauLettre;
 	
 	
 	
 	public Modele() {
 		String[] dicos = {"./dico_a-g.txt","./dico_h-z.txt"};
 		this.dico = new Dictionnaire(dicos);
+		this.PlateauLettre = new cell[15][15];
 		
 		XMLDecoder decoder = null;
 		if (this.fichier.exists()) {		
@@ -60,6 +61,7 @@ public class Modele extends Observable{
 			}
 		}
 	}
+	
 	
 	public void enregistrer() {
 		XMLEncoder encoder = null;
@@ -90,9 +92,14 @@ public class Modele extends Observable{
 		this.partieEC = new Partie(this.NbJ);
 		
 	}
-
 	
-	
+	public void PlacerLettre(char lettre,int x, int y) {
+		this.PlateauLettre[x][y].x=x ;
+		this.PlateauLettre[x][y].x=y ;
+		this.PlateauLettre[x][y].letter=lettre;
+		this.PlateauLettre[x][y].occupied=true;
+		
+	}
 	
 	
 	public void changeEtat(Integer e) { //pour communiquer avec la vue de tout changement du modele
@@ -100,5 +107,5 @@ public class Modele extends Observable{
 		this.notifyObservers(e);
 	}
 
-
+	
 }
