@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Partie implements Serializable {
 	
@@ -11,6 +12,8 @@ public class Partie implements Serializable {
 	
 	public int NbrJoueur;
 	public int[] TableauScore;
+	public Player J_actif;
+	public Player[] Jrs; //liste de joueurs
 	
 	static char[] lettres = {'a','b','c','d','e','f','g','h','i','j','k','l','m'
 			,'n','o','p','q','r','s','t','u','v','w','x','y','z',' '};
@@ -21,12 +24,14 @@ public class Partie implements Serializable {
 	static int[] points = {1,3,3,2,1,4,2,4,1,8,10,1,2
 			,1,1,3,8,1,1,1,1,4,10,10,10,10,0};
 	
-	public Map<Character,Integer> Sac;
+	public Map<Character,Integer> Sac; //useless pour le moment, affichage des regles plus tard ?
 	public Map<Character,Integer> PtsLettre;
 	
 	
 	public ArrayList<ArrayList<cell>> plateau = new ArrayList<>();
-	
+	public ArrayList<Character> sacDePioche; //necessaire pour avoir une pioche vraiment aleatoire
+
+
 	
 	
 	
@@ -37,16 +42,23 @@ public class Partie implements Serializable {
 	
 	public Partie(int NbrJ) {
 		this.NbrJoueur = NbrJ;
+		this.Jrs = new Player[NbrJ];
 		this.Sac = new HashMap<Character,Integer>();
 		this.PtsLettre = new HashMap<Character,Integer>();
 	
 		for (int i=0; i<= 26; i++) {
-			Sac.put(lettres[i], quantite[i]);
-			PtsLettre.put(lettres[i], points[i]);
+			this.Sac.put(lettres[i], quantite[i]);
+			this.PtsLettre.put(lettres[i], points[i]);
+			
+			for (int x = 0; x < quantite[i]; x++) { //le sac de pioche doit rester uniforme en quantité
+				this.sacDePioche.add(lettres[i]);
+			}
 		}
 		
-		for (int i=0 ; i < NbrJ ; i++) {//pour chaque joueur faire...
-			
+		for (int i=0 ; i < NbrJ ; i++) {//pour chaque joueur remplir d'une main random au debut
+			this.J_actif = new Player(i);
+			this.mainRdm();
+			this.nextPlayer();
 		}
 		
 		for (int i = 0; i <15 ; i++) { //initialisation des cases du plateau
@@ -66,7 +78,7 @@ public class Partie implements Serializable {
 	}
 	
 	public String toString() {
-		String res = Integer.toString(this.NbrJoueur) + " ";
+		String res = Integer.toString(this.NbrJoueur) + " joueurs \n";
 		
 		for (ArrayList<cell> l : this.plateau) { //initialisation des cases du plateau
 			res = res +"\n";
@@ -80,8 +92,38 @@ public class Partie implements Serializable {
 		
 		return res;
 	}
+
+	public void mainRdm() {
+		// donne une nouvelle main a un joueur qui n'en a pas
+		if (this.J_actif.main.size() < 7) {
+			
+			Random r = new Random();
+			
+			for (int i = 0; i< 7; i++) {
+				int num_L = r.nextInt(this.sacDePioche.size());
+				this.J_actif.main.add(this.sacDePioche.get(num_L));
+				this.sacDePioche.remove(num_L);
+			}
+		}
+	}
 	
+	public void changerLettre(int pos_l) {//prend en parametre la lettre numéro pos_l dans la main du joueur, 
+													//l'enlève, la remet dans le sac et en pioche une autre
+		char x = this.J_actif.main.get(pos_l);
+		this.J_actif.main.remove(pos_l);
+		this.sacDePioche.add(x);
+		
+		Random r = new Random();
+		int num_L = r.nextInt(this.sacDePioche.size());
+		this.J_actif.main.add(this.sacDePioche.get(num_L));
+	}
 	
+	public void nextPlayer() {
+		
+		int ja_num = this.J_actif.num_j;
+		this.Jrs[ja_num]=this.J_actif;
+		this.J_actif = this.Jrs[(ja_num+1)%this.NbrJoueur];
+	}
 	
 }
 

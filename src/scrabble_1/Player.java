@@ -1,24 +1,26 @@
-import java.awt.Color;
+package scrabble_1;
+
+import java.util.ArrayList;
 
 public class Player {
-	String name;
-	int score;
-	char[] main;
-	Color color;
+	
+	public String name;
+	public int score;
+	public int num_j;
+	public ArrayList<Character> main;
 	
 	public void setName(String n) {
-		name=n;
-		
+		this.name=n;
 	}
-	public String getName() {
-		return name;
-	}
-	public int getScore() {
-		return score;
-	}
-	public char[] getMain() {
-		return main;
 	
-
+	
+	public Player(int numj) {
+		this.num_j=numj;
+		this.score= 0;
+		this.main = new ArrayList<Character>();
 	}
+	
+	
+	
+	
 }
