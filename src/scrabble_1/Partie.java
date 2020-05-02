@@ -33,7 +33,7 @@ public class Partie implements Serializable {
 
 
 	
-	
+	public ArrayList<String> MotJoues = new ArrayList<String>();
 	
 	
 	
@@ -161,6 +161,10 @@ public class Partie implements Serializable {
 	
 	public void actuScore(int x1, int y1, int x2, int y2, Dictionnaire d, int somme) {
 		//consulter les regles, faire qqc de recursif ?
+	}
+	
+	public void Listemotjoue(String mot){
+		this.MotJoues.add(mot);
 	}
 }
 
