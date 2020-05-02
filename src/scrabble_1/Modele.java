@@ -1,5 +1,6 @@
 package scrabble_1;
 
+import java.awt.Color;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.BufferedInputStream;
@@ -9,9 +10,15 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Observer;
 
 
 public class Modele extends Observable{
+	
+	
+	public enum etats{
+		ENCOURS, FINI
+	}
 	
 	public int NbJ;
 	public ArrayList<Partie> parties;
@@ -36,14 +43,14 @@ public class Modele extends Observable{
 									,{0,2,0,0,0,3,0,0,0,3,0,0,0,2,0}
 									,{4,0,0,1,0,0,0,4,0,0,0,1,0,0,4}};
 	
-	public cell[][] PlateauLettre;
+	public Color[] colors = {Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};
 	
 	
 	
 	public Modele() {
 		String[] dicos = {"./dico_a-g.txt","./dico_h-z.txt"};
 		this.dico = new Dictionnaire(dicos);
-		this.PlateauLettre = new cell[15][15];
+		//this.PlateauLettre = new cell[15][15];
 		
 		XMLDecoder decoder = null;
 		if (this.fichier.exists()) {		
@@ -90,17 +97,24 @@ public class Modele extends Observable{
 	public void newPartie(int NbJ) {
 		this.NbJ = NbJ;
 		this.partieEC = new Partie(this.NbJ);
-		
 	}
 	
-	public void PlacerLettre(char lettre,int x, int y) {
-		this.PlateauLettre[x][y].x=x ;
-		this.PlateauLettre[x][y].x=y ;
-		this.PlateauLettre[x][y].letter=lettre;
-		this.PlateauLettre[x][y].occupied=true;
-		
+	
+	public void changeTour() {
+		this.partieEC.nextPlayer();
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
+	public boolean confirmerMot(int x1, int y1, int x2, int y2) {
+		return this.partieEC.confirmerMot(x1, y1, x2, y2, this.dico);
+	}
+	
+	public void PlacerLettre(char c,int x,int y) {
+		this.partieEC.PlacerLettre(c, x, y);
+		this.setChanged();
+		this.notifyObservers();
+	}
 	
 	public void changeEtat(Integer e) { //pour communiquer avec la vue de tout changement du modele
 		this.setChanged();

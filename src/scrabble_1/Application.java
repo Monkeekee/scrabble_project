@@ -6,9 +6,10 @@ public class Application {
 		// TODO Auto-generated method stub
 		Modele m = new Modele();
 		
-		Controleur c = new Controleur();
+		Controleur c = new Controleur(m);
 		
-		Vue v = new Vue(c);  //vue
+		Vue v = new Vue(c,m);  // JFRAME
+		
 		m.addObserver(v);
 		
 		

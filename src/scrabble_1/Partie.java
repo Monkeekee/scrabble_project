@@ -116,6 +116,8 @@ public class Partie implements Serializable {
 		Random r = new Random();
 		int num_L = r.nextInt(this.sacDePioche.size());
 		this.J_actif.main.add(this.sacDePioche.get(num_L));
+		
+		
 	}
 	
 	public void nextPlayer() {
@@ -125,6 +127,41 @@ public class Partie implements Serializable {
 		this.J_actif = this.Jrs[(ja_num+1)%this.NbrJoueur];
 	}
 	
+	public void PlacerLettre(char lettre,int x, int y) {
+		this.plateau.get(x).get(y).x=x ;
+		this.plateau.get(x).get(y).y=y ;
+		this.plateau.get(x).get(y).letter=lettre;
+		this.plateau.get(x).get(y).occupied=true;
+	}
+	
+	public String motEntre(int x1, int y1, int x2, int y2) {
+		String mot = "";
+		if (x1 == x2) {
+			for (int i = y1 ; y1 <= y2 ; i++ ) {
+				mot = mot + this.plateau.get(x1).get(i).letter;
+			}
+		}
+		if (y2 == y1) {
+			for (int i = x1 ; x1 <= x2 ; i++ ) {
+				mot = mot + this.plateau.get(i).get(y1).letter;
+			}
+		}
+		return mot;
+		
+	}
+	
+	public boolean confirmerMot(int x1, int y1, int x2, int y2, Dictionnaire d) {
+		boolean res = false;
+		String mot = this.motEntre(x1, y1, x2, y2);
+		if (d.existe(mot)) {
+				res=true;
+			}
+		return res;
+	}
+	
+	public void actuScore(int x1, int y1, int x2, int y2, Dictionnaire d, int somme) {
+		//consulter les regles, faire qqc de recursif ?
+	}
 }
 
 

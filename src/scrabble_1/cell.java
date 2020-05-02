@@ -6,7 +6,7 @@ public class cell {
 	
 	public char letter;
 	public int value;
-	public Color color; //...pareil que pour cellsize
+	public Color color;
 	public int x;
 	public int y;
 	public int cellsize;  //doit dépendre seulement de la vue, a déplacer aillleurs
