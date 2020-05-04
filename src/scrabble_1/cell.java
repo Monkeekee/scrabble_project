@@ -4,13 +4,14 @@ import java.awt.Graphics;
 
 public class cell {
 	
-	char letter;
-	int value;
-	Color color ;
-	int x;
-	int y;
-	int cellsize;
-	boolean selec;
+	public char letter;
+	public int value;
+	public Color color;
+	public int x;
+	public int y;
+	public int cellsize;  //doit dépendre seulement de la vue, a déplacer aillleurs
+	public boolean selec;
+	public boolean occupied;
 
 	
 	public cell (int ord,int abs, char letter, int value,Color color,int size) {
@@ -23,19 +24,21 @@ public class cell {
 		this.selec=false;
 
 	}
+
+	public cell (int value) {
+		this.value=value;
+		this.selec=false;
+		this.occupied=false;
+	}
 	
 
-	public char getLetter() {
-		return this.letter;
-	}
-	public int getValue() {
-		return this.value;
-	}
 	public String toString() {
 		return Character.toString(this.letter);
 	}
+	
 
 	
+	//les deux methodes du bas dans la vue uniquement aussi
 	public void paintCell1(Graphics g) {
 		g.setColor(this.color);
 		g.draw3DRect(this.x, this.y, this.cellsize-2, this.cellsize-2, !(this.selec));
