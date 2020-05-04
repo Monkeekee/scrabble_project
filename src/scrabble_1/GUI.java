@@ -1,4 +1,3 @@
-package scrabble_1;
 import javax.swing.*;
 
 import java.awt.Color;
@@ -14,9 +13,16 @@ import java.util.ArrayList;
 
 public class GUI extends JFrame  {
 
+
+	
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+	int screenWidth = (screenSize.width);
+	int screenHeight = (screenSize.height);
+	
 	int spacing=1;
-	int cellsize=60;
-		
+	int cellsize=(screenHeight)/16;
+	
 	int mcx=-1;
 	int mcy=-1;
 	
@@ -24,7 +30,7 @@ public class GUI extends JFrame  {
 	
 	Color CouleurJoeur = Color.MAGENTA;
 	
-	char[] main1 = {'l' , 'a' , 'b' , 'c' , 'd' , 'e','g','j'};
+	char[] main1 = {'l' , 'a' , 'b' , 'c' , 'd' , 'e','g'};
 	
 	Color[] colors = {Color.BLACK,Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};
 
@@ -46,7 +52,9 @@ public class GUI extends JFrame  {
 		{3,1,1,5,1,1,1,3,1,1,1,5,1,1,3}
 		};
 
-    
+ 
+	int sizebutonW =(screenWidth - cellsize*15)/4;
+	int sizebutonH=screenHeight/6;
     JButton BEnd = new JButton();
     JButton BNext = new JButton();
     JButton BPioche = new JButton();
@@ -57,10 +65,11 @@ public class GUI extends JFrame  {
 		
 		
 		this.setTitle("SCRABLE");
-		this.setSize(1500,930);
+		this.setSize(screenSize.width, screenSize.height);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
-		this.setResizable(false);
+		this.setResizable(true);
+
 		this.setLocationRelativeTo(null);
 		
 
@@ -75,13 +84,13 @@ public class GUI extends JFrame  {
 		
 		this.setLayout(null);
 		
-		BEnd.setBounds(915,400,125,75);
+		BEnd.setBounds(cellsize*15,screenHeight/2 ,sizebutonW,sizebutonH);
 		BEnd.setText("FIN DU TOUR");
-		BNext.setBounds(1060,400,125,75);
+		BNext.setBounds(cellsize*15 +sizebutonW,screenHeight/3,sizebutonW,sizebutonH);
 		BNext.setText("FIN DU TOUR");
-		BPioche.setBounds(1205,400,125,75);
+		BPioche.setBounds(cellsize*15 + 2*sizebutonW,screenHeight/2,sizebutonW,sizebutonH);
 		BPioche.setText("PIOCHE");
-		Bsupp.setBounds(1350,400,125,75);
+		Bsupp.setBounds(cellsize*15 + 3*sizebutonW,screenHeight/3,sizebutonW,sizebutonH);
 		Bsupp.setText("SUPP");
 		
 		board.add(BEnd);
@@ -94,11 +103,16 @@ public class GUI extends JFrame  {
 	
 
 class Board extends JPanel{
+	
+	int frameWidth=screenSize.width;
+	int frameHeight=screenSize.height;
+	
 
 	public cell temp1,temp2 ;
 	public ArrayList<cell> mainC = new ArrayList<cell>();
 	public ArrayList<ArrayList<cell>> grid1;
 
+	int width=frameWidth -(15*cellsize);
 
 	
 	public Board() {
@@ -113,26 +127,29 @@ class Board extends JPanel{
 				}
 			this.grid1.add(line);
 		
+			
 		}
 		System.out.println("CONSTRU matrice:"  + this.grid1);
-
+		this.repaint();
 	}
 	public void paintComponent(Graphics g) {		
 		this.pPart(g);
 		this.pBoard(g);
 		this.drawMain(g);	
 
+
 		}
 	
 	
 	public void pPart(Graphics g) {
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(899, 600, 1500-899, 930-600); //partie lettre
-		g.setColor(Color.gray);
-		g.fillRect(899, 300, 1500-899, 600-300);//partie button
+
 		g.setColor(Color.cyan);
-		g.fillRect(899, 0, 1500-899, 300);//partie score
-		g.setColor(Color.red);
+		g.fillRect(cellsize*15, 0, width, (frameHeight)/3);//partie score
+		g.setColor(Color.gray);
+		g.fillRect(cellsize*15, frameHeight/3, width, (frameHeight)/3);//partie button
+		g.setColor(Color.LIGHT_GRAY);
+		g.fillRect(cellsize*15, (2*frameHeight)/3, width, (frameHeight)/3); //partie lettre
+
 	}
 	
 	public void pBoard(Graphics g){
@@ -147,12 +164,12 @@ class Board extends JPanel{
 	}
 	
 	public void createCellMain(){
-		int size=75;
+		int size=width/7;
 		int i=0;
-		int x=900;
-		int y=700;
+		int x=cellsize*15;
+		int y=(2 *(frameHeight)/3);
 		for (char c : main1) {
-			mainC.add(new cell(x+i*size,y,c,2,Color.YELLOW,size));
+			mainC.add(new cell(x+i*size,(frameHeight/12) +y,c,2,Color.YELLOW,size));
 			i=i+1;
 		}
 	
@@ -165,12 +182,8 @@ class Board extends JPanel{
 			cellule.paintLetter(g, CouleurJoeur);
 		}
 	}
-	public void drawClick(int i,int j) {
-		temp1=this.grid1.get(i).get(j);
-		//temp1.selec=!(temp1.selec);
-		temp1.color=Color.BLACK;
-		this.grid1.get(i).set(j,temp1);
-	}
+
+
 
 
 	
@@ -198,15 +211,19 @@ public class Click implements MouseListener{
 		@Override
 	public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-		Board plato=new Board();
+
 		cell selec;
 		int cx = e.getX();
 		int cy = e.getY();
-		int mcx=cx/60;
+		int mcx=cx/cellsize;
 		int mcy=(cy-25)/60;
 		if (0<=cx && cx<=900 && 0<=cy && cy<=925) {
 			System.out.println("matrice:"  +mcx + ","+ mcy);
-			plato.drawClick(mcx, mcy);
+
+
+
+			
+
 			
 			
 
@@ -250,10 +267,7 @@ public class Keyboard implements KeyListener {
 		// TODO Auto-generated method stub
 		char Caract = evt.getKeyChar();
 		System.out.println(Caract);
-		
-		if (Arrays.asList(main1).contains(Caract)) {
-		    System.out.println("it's in boss");
-		}
+
 		
 	}
 
