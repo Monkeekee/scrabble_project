@@ -48,8 +48,8 @@ public class Modele extends Observable{
 	
 	
 	public Modele() {
-		String[] dicos = {"./dico_a-g.txt","./dico_h-z.txt"};
-		this.dico = new Dictionnaire(dicos);
+		//String[] dicos = {"./dico_a-g.txt","./dico_h-z.txt"};
+		//this.dico = new Dictionnaire(dicos);
 		//this.PlateauLettre = new cell[15][15];
 		
 		XMLDecoder decoder = null;

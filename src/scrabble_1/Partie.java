@@ -163,6 +163,61 @@ public class Partie implements Serializable {
 		//consulter les regles, faire qqc de recursif ?
 	}
 	
+	public int ptsMot(int x1,int y1, int x2,int y2) {
+		int points = 0;
+		int multiplicateur = 1;
+		if (x1 == x2) {
+			for (int i = y1 ; y1 <= y2 ; i++ ) {
+				if(this.plateau.get(x1).get(i).checked==false) {
+					if(Modele.Plateau[x1][i]==1) {
+						points += this.PtsLettre.get(this.plateau.get(x1).get(i).letter)*2;
+					}
+					if(Modele.Plateau[x1][i]==3) {
+						points += this.PtsLettre.get(this.plateau.get(x1).get(i).letter)*3;
+					}
+					if(Modele.Plateau[x1][i]==2) {
+						multiplicateur = 2;
+					}
+					if(Modele.Plateau[x1][i]==4) {
+						multiplicateur = 3;
+					}
+				}else {
+					if(Modele.Plateau[x1][i]==0) {
+						points += this.PtsLettre.get(this.plateau.get(x1).get(i).letter);
+					}
+					
+				}
+			
+			}
+		}
+		if (y1 == y2) {
+			for (int i = x1 ; x1 <= x2 ; i++ ) {
+				if(this.plateau.get(i).get(y1).checked==false) {
+					if(Modele.Plateau[i][y1]==1) {
+						points += this.PtsLettre.get(this.plateau.get(i).get(y1).letter)*2;
+					}
+					if(Modele.Plateau[i][y1]==3) {
+						points += this.PtsLettre.get(this.plateau.get(i).get(y1).letter)*3;
+					}
+					if(Modele.Plateau[i][y1]==2) {
+						multiplicateur = 2;
+					}
+					if(Modele.Plateau[i][y1]==4) {
+						multiplicateur = 3;
+					}
+				}else {
+					if(Modele.Plateau[i][y1]==0) {
+						points += this.PtsLettre.get(this.plateau.get(i).get(y1).letter);
+					}
+					
+				}
+			
+			}
+		}
+		points = points*multiplicateur;
+		return points;
+	}
+	
 	public void Listemotjoue(String mot){
 		this.MotJoues.add(mot);
 	}
