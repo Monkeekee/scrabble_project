@@ -69,6 +69,11 @@ public class Modele extends Observable{
 		}
 	}
 	
+	public void chargeDico() {
+		String[] dicos = {"./dico_a-g.txt","./dico_h-z.txt"};
+		this.dico = new Dictionnaire(dicos);
+	}
+	
 	
 	public void enregistrer() {
 		XMLEncoder encoder = null;
@@ -89,12 +94,18 @@ public class Modele extends Observable{
 	public ArrayList<Partie> getParties() {
 		return parties;
 	}
+	
+	
+	
+	
+	
 
 	public void setParties(ArrayList<Partie> parties) {
 		this.parties = parties;
 	}
 	
 	public void newPartie(int NbJ) {
+		this.chargeDico();	
 		this.NbJ = NbJ;
 		this.partieEC = new Partie(this.NbJ);
 	}

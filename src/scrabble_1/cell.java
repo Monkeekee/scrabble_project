@@ -12,6 +12,7 @@ public class cell {
 	public int cellsize;  //doit dépendre seulement de la vue, a déplacer aillleurs
 	public boolean selec;
 	public boolean occupied;
+	public boolean checked;
 
 	
 	public cell (int ord,int abs, char letter, int value,Color color,int size) {
@@ -29,6 +30,7 @@ public class cell {
 		this.value=value;
 		this.selec=false;
 		this.occupied=false;
+		this.checked=false;
 	}
 	
 
