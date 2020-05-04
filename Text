@@ -42,12 +42,28 @@ Vue:
 
 
 
-Methode pour modele:
+*Methode pour modele:
 
 Maj du score
 creer une partie
-tirer des lettres
-placer mot ou lettre
-passer le tour
-verification mot
+tirer des lettres OK
+placer mot ou lettre OK
+passer le tour OK
+verification mot OK
+
+
+*Ergonomie de la vue
+
+Pour placer un mot : cliquer sur une case qui change de texture avec 
+un underscore pour montrer qu'on peut taper une lettre, changer la texture des jetons du banc
+Pour valider le mot, taper sur entrée ou un bouton
+Pour recommencer, bouton qui enlève toutes les cases occupées mais pas validées : Retirer
+(Ce bouton est grisé quand on ne peux pas cliquer dessus ?)
+
+* Lancement du programme :
+
+On peut lancer une des sauvegardes précédentes : au lieu de la main et des boutons :
+Un volet déroulant qui affiche les sauvegarde précédentes avec leur nom (3 J Nom_du_Joueur1 par exemple) ainsi q'une section nouvelle partie avec un volet déroulant pour choisir la configuration de la partie à lancer (2 J, 1 J et 1 IA, 3 J, 4 J)
+Moyen de supprimer une sauvegarde ?
+
 
