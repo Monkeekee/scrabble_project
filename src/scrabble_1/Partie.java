@@ -221,6 +221,38 @@ public class Partie implements Serializable {
 	public void Listemotjoue(String mot){
 		this.MotJoues.add(mot);
 	}
+	
+	public int[] Touchemot(int x,int y,char direction) {
+		int x1=x;
+		int x2=x;
+		int y1=y;
+		int y2=y;
+		if (direction == 'V') {
+			if (this.plateau.get(x).get(y+1).occupied) {
+				y2+=1;
+				this.Touchemot(x, y2, 'V');
+			}
+			if(this.plateau.get(x).get(y-1).occupied) {
+				y1+=-1;
+				this.Touchemot(x, y1, 'V');
+			}
+		}
+		if (direction == 'H') {
+			if (this.plateau.get(x+1).get(y).occupied) {
+				x2+=1;
+				this.Touchemot(x2, y, 'H');
+			}
+			if(this.plateau.get(x-1).get(y).occupied) {
+				x1+=-1;
+				this.Touchemot(x1, y, 'H');
+			}
+		}
+		if ( x1==x2 && y1==y2) {
+			return null;
+		}
+		int [] coo= {x1,x2,y1,y2};
+		return coo;
+	}
 }
 
 
