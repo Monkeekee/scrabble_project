@@ -9,8 +9,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import scrabble_1.GUI.Click;
-import scrabble_1.GUI.Move;
 
 public class Controleur implements  ActionListener, MouseListener, KeyListener{ 
 
