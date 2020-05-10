@@ -8,9 +8,11 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 
-public class Controleur implements  ActionListener, MouseListener, KeyListener{ 
+public class Controleur implements  ActionListener, MouseListener, KeyListener, WindowListener{ 
 
 	private Modele modl;
 	
@@ -72,7 +74,9 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener{
 			modl.changeTour();
 		}
 		if(btn.getName()=="PIOCHE") {
-			modl.partieEC.mainRdm();
+			for (int i=0; i<=6;i++) {
+				modl.partieEC.changerLettre(i);
+			}
 			
 		}
 		if(btn.getName()=="SUPPRIMER") {
@@ -102,6 +106,63 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void windowActivated(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void windowClosed(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void windowClosing(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		modl.enregistrer();
+		System.exit(0);
+	}
+
+
+
+	@Override
+	public void windowDeactivated(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void windowDeiconified(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void windowIconified(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void windowOpened(WindowEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
