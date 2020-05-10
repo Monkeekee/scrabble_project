@@ -4,9 +4,11 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
@@ -36,7 +38,30 @@ public class Board extends JPanel{
 	public Board(Modele modl, Controleur C) {
 		this.modl = modl;
 		this.ctrl = ctrl;
-		this.repaint();
+		this.setLayout(new GridLayout());
+		
+		
+		int sizebutonW =(frameWidth/6 - cellsize*15)/4;
+		int sizebutonH=frameHeight/6;
+	    JButton BEnd = new JButton();
+	    JButton BNext = new JButton();
+	    JButton BPioche = new JButton();
+	    JButton Bsupp = new JButton();
+		
+		BEnd.setBounds(cellsize*15,frameHeight/2 ,sizebutonW,sizebutonH);
+		BEnd.setText("VALIDER MOT");
+		BNext.setBounds(cellsize*15 +sizebutonW,frameHeight/3,sizebutonW,sizebutonH);
+		BNext.setText("FIN DU TOUR");
+		BPioche.setBounds(cellsize*15 + 2*sizebutonW,frameHeight/2,sizebutonW,sizebutonH);
+		BPioche.setText("PIOCHE");
+		Bsupp.setBounds(cellsize*15 + 3*sizebutonW,frameHeight/3,sizebutonW,sizebutonH);
+		Bsupp.setText("SUPPRIMER");
+		
+		this.add(BEnd);
+		this.add(BNext);
+		this.add(BPioche);
+		this.add(Bsupp);
+
 	}
 	
 	

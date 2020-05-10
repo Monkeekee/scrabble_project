@@ -47,28 +47,13 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 		this.setResizable(false);
 
 		this.setLocationRelativeTo(null);
-		
+		this.setLayout(null);
 
 		Board board= new Board(m,c);
 		this.setContentPane(board);
-		
-		
-		
-		this.setLayout(null);
-		
-		BEnd.setBounds(cellsize*15,screenHeight/2 ,sizebutonW,sizebutonH);
-		BEnd.setText("FIN DU TOUR");
-		BNext.setBounds(cellsize*15 +sizebutonW,screenHeight/3,sizebutonW,sizebutonH);
-		BNext.setText("FIN DU TOUR");
-		BPioche.setBounds(cellsize*15 + 2*sizebutonW,screenHeight/2,sizebutonW,sizebutonH);
-		BPioche.setText("PIOCHE");
-		Bsupp.setBounds(cellsize*15 + 3*sizebutonW,screenHeight/3,sizebutonW,sizebutonH);
-		Bsupp.setText("SUPP");
-		
-		board.add(BEnd);
-		board.add(BNext);
-		board.add(BPioche);
-		board.add(Bsupp);
+
+		this.repaint();
+
 		
 	}
 	
@@ -91,39 +76,7 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 	
 	char[] main1 = {'l' , 'a' , 'b' , 'c' , 'd' , 'e','g'};
 	
-	Color[] colors = {Color.BLACK,Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};
-
-    int[][] grid= {
-		{3,1,1,5,1,1,1,3,1,1,1,5,1,1,3},
-		{1,2,1,1,1,4,1,1,1,4,1,1,1,2,1},
-		{1,1,2,1,1,1,5,1,5,1,1,1,2,1,1},
-		{1,1,1,2,1,1,1,5,1,1,1,2,1,1,1},
-		{5,1,1,1,2,1,1,1,1,1,2,1,1,1,5},
-		{1,4,1,1,1,4,1,1,1,4,1,1,4,1,1},
-		{1,1,5,1,1,1,5,1,5,1,1,5,1,1,1},
-		{3,1,1,5,1,1,1,2,1,1,5,1,1,1,3},
-		{1,1,5,1,1,1,5,1,5,1,1,5,1,1,1},
-		{1,4,1,1,1,4,1,1,1,4,1,1,4,1,1},
-		{1,1,1,1,2,1,1,1,1,1,2,1,1,1,1},
-		{5,1,1,2,1,1,1,5,1,1,1,2,1,1,5},
-		{1,1,2,1,1,1,5,1,5,1,1,1,2,1,1},
-		{1,2,1,1,1,4,1,1,1,4,1,1,1,2,1},
-		{3,1,1,5,1,1,1,3,1,1,1,5,1,1,3}
-		};
-
- 
-	int sizebutonW =(screenWidth - cellsize*15)/4;
-	int sizebutonH=screenHeight/6;
-    JButton BEnd = new JButton();
-    JButton BNext = new JButton();
-    JButton BPioche = new JButton();
-    JButton Bsupp = new JButton();
-    
-   
-
-
-	
-	
+	Color[] colors = {Color.BLACK,Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};	
 	
 	
 	
