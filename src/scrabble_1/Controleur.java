@@ -24,7 +24,16 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if (e.getClickCount() == 1) {
+			int x = e.getX();
+			int y = e.getY();
+			modl.partieEC.plateau.get(x).get(y).selec = true;
+		}
+		if (e.getClickCount() == 2) {
+			int x = e.getX();
+			int y = e.getY();
+			modl.partieEC.plateau.get(x).get(y).selec = false;
+		}
 	}
 
 	@Override
@@ -55,16 +64,19 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Button btn = (Button)e.getSource();
-		if(btn.getName()=="Valider") {
+		if(btn.getName()=="VALIDER MOT") {
 			
 			modl.changeTour();
 		}
-		if(btn.getName()=="Passer") {
+		if(btn.getName()=="FIN DU TOUR") {
 			modl.changeTour();
 		}
-		if(btn.getName()=="Pioche") {
+		if(btn.getName()=="PIOCHE") {
 			modl.partieEC.mainRdm();
 			
+		}
+		if(btn.getName()=="SUPPRIMER") {
+			modl.partieEC.SupprimerMot();
 		}
 	}
 	
@@ -74,7 +86,7 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener{
 	public void keyPressed(KeyEvent evt) {
 		// TODO Auto-generated method stub
 		char Caract = evt.getKeyChar();
-		System.out.println(Caract);
+		modl.PlacerLettre(Caract, this.modl.partieEC.CaseSelec()[0],this.modl.partieEC.CaseSelec()[1] );
 
 	}
 

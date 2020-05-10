@@ -274,17 +274,35 @@ public class Partie implements Serializable {
 		int [] coo= {x1,x2,y1,y2};
 		return coo;
 	}
+	
 	public void SupprimerMot() {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0;j < 15; j++) {
 				if (this.plateau.get(i).get(j).occupied==true && this.plateau.get(i).get(j).checked==false) {
 					this.plateau.get(i).get(j).occupied = false;
 					this.plateau.get(i).get(j).letter = ' ';
-					this.plateau.get(i).get(j).selec=false;
 				}
 			}
 		}
 	}
+	
+	public int[] CaseSelec() {
+		int x = 0;
+		int y = 0;
+		
+		for (int i = 0; i < 15; i++) {
+			
+			for (int j = 0;j < 15; j++) {
+				if (this.plateau.get(i).get(j).selec) {
+					x=i;
+					y=j;
+				}
+			}
+		}
+		int [] coo = {x,y};
+		return coo;
+	}
+	
 }
 
 
