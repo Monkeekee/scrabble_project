@@ -23,7 +23,7 @@ import scrabble_1.GUI.Move;
 
 
 public class Vue extends JFrame implements Observer{//completer avec GUI
-
+	
 	private Dimension d;
 
 	public Modele modl;
@@ -43,7 +43,7 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 		this.setSize(screenSize.width, screenSize.height);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
-		this.setResizable(true);
+		this.setResizable(false);
 
 		this.setLocationRelativeTo(null);
 		
@@ -51,11 +51,7 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 		Board board= new Board();
 		this.setContentPane(board);
 		
-		Move move= new Move();
-		this.addMouseMotionListener(move);
 		
-		Click click =new Click();
-		this.addMouseListener(click);
 		
 		this.setLayout(null);
 		
@@ -213,101 +209,7 @@ class Board extends JPanel{
 	
 }
 	
-public class Move implements MouseMotionListener{
 
-	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-
-	}
-	
-	}
-public class Click implements MouseListener{
-
-	
-		@Override
-	public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		cell selec;
-		int cx = e.getX();
-		int cy = e.getY();
-		int mcx=cx/cellsize;
-		int mcy=(cy-25)/60;
-		if (0<=cx && cx<=900 && 0<=cy && cy<=925) {
-			System.out.println("matrice:"  +mcx + ","+ mcy);
-
-
-
-			
-
-			
-			
-
-
-				
-				
-				
-			}
-
-		}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-	}
-	
-}
-public class Keyboard implements KeyListener {
-
-	@Override
-	public void keyPressed(KeyEvent evt) {
-		// TODO Auto-generated method stub
-		char Caract = evt.getKeyChar();
-		System.out.println(Caract);
-
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-}
 
 	//
 	
