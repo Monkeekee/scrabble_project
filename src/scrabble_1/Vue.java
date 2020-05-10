@@ -1,5 +1,6 @@
 package scrabble_1;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -47,10 +48,11 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 		this.setResizable(false);
 
 		this.setLocationRelativeTo(null);
-		this.setLayout(null);
+		this.setLayout(new BorderLayout());
 
 		Board board= new Board(m,c);
-		this.setContentPane(board);
+		this.add(board);
+		this.add(new Interface(m,c));
 
 		this.repaint();
 

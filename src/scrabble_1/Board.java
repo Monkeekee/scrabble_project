@@ -37,54 +37,19 @@ public class Board extends JPanel{
 	
 	public Board(Modele modl, Controleur C) {
 		this.modl = modl;
-		this.ctrl = ctrl;
-		this.setLayout(new GridLayout());
-		
-		
-		int sizebutonW =(frameWidth/6 - cellsize*15)/4;
-		int sizebutonH=frameHeight/6;
-	    JButton BEnd = new JButton();
-	    JButton BNext = new JButton();
-	    JButton BPioche = new JButton();
-	    JButton Bsupp = new JButton();
-		
-		BEnd.setBounds(cellsize*15,frameHeight/2 ,sizebutonW,sizebutonH);
-		BEnd.setText("VALIDER MOT");
-		BNext.setBounds(cellsize*15 +sizebutonW,frameHeight/3,sizebutonW,sizebutonH);
-		BNext.setText("FIN DU TOUR");
-		BPioche.setBounds(cellsize*15 + 2*sizebutonW,frameHeight/2,sizebutonW,sizebutonH);
-		BPioche.setText("PIOCHE");
-		Bsupp.setBounds(cellsize*15 + 3*sizebutonW,frameHeight/3,sizebutonW,sizebutonH);
-		Bsupp.setText("SUPPRIMER");
-		
-		this.add(BEnd);
-		this.add(BNext);
-		this.add(BPioche);
-		this.add(Bsupp);
+		this.ctrl = C;
+		this.repaint();
 
 	}
 	
 	
 	
-	public void paintComponent(Graphics g) {		
-		this.pPart(g);//
+	public void paint(Graphics g) {		
 		this.pBoard(g);
-		this.drawMain(g);//
-
-
 		}
 	
 	
-	public void pPart(Graphics g) { //pas ici
 
-		g.setColor(Color.cyan);
-		g.fillRect(cellsize*15, 0, width, (frameHeight)/3);//partie score
-		g.setColor(Color.gray);
-		g.fillRect(cellsize*15, frameHeight/3, width, (frameHeight)/3);//partie button
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(cellsize*15, (2*frameHeight)/3, width, (frameHeight)/3); //partie lettre
-
-	}
 	
 	public void pBoard(Graphics g){
 		for (int i = 0; i < 15; i++)
@@ -97,25 +62,7 @@ public class Board extends JPanel{
 		}
 	}
 	
-	public void createCellMain(){
-		int size=width/7;
-		int i=0;
-		int x=cellsize*15;
-		int y=(2 *(frameHeight)/3);
-		for (char c : this.modl.partieEC.J_actif.main) {
-			mainC.add(new cell(x+i*size,(frameHeight/12) +y,c,2,Color.YELLOW,size));
-			i=i+1;
-		}
-	
-		
-	}
-	public void drawMain(Graphics g) {
-		this.createCellMain();
-		for(cell cellule: mainC) {
-			cellule.paintCell1(g );
-			cellule.paintLetter(g, Color.BLACK);
-		}
-	}
+
 
 
 
