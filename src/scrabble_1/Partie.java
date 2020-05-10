@@ -166,12 +166,18 @@ public class Partie implements Serializable {
 		char dir;
 		if (x1==x2) {
 			dir='V';
+			if(y2-y1==7) {
+				this.J_actif.score += 50;
+			}
 			for (int i = y1 ; y1 <= y2 ; i++ ) {
 				this.J_actif.score += this.ptsMot(this.Touchemot(x1, i, dir)[0], this.Touchemot(x1, i, dir)[2], this.Touchemot(x1, i, dir)[1], this.Touchemot(x1, i, dir)[3]);
 			}
 		}
 		if (y1==y2) {
 			dir='H';
+			if(x2-x1==7) {
+				this.J_actif.score += 50;
+			}
 			for (int i = x1 ; x1 <= x2 ; i++ ) {
 				this.J_actif.score += this.ptsMot(this.Touchemot(i, y1, dir)[0], this.Touchemot(i, y1, dir)[2], this.Touchemot(i, y1, dir)[1], this.Touchemot(i, y1, dir)[3]);
 			}

@@ -57,6 +57,14 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener{
 		Button btn = (Button)e.getSource();
 		if(btn.getName()=="Valider") {
 			
+			modl.changeTour();
+		}
+		if(btn.getName()=="Passer") {
+			modl.changeTour();
+		}
+		if(btn.getName()=="Pioche") {
+			modl.partieEC.mainRdm();
+			
 		}
 	}
 	
