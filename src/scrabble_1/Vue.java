@@ -31,7 +31,7 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 		
 	
 	public Vue(Controleur c, Modele m) {
-		super();
+		super("Scrabble");
 		this.setMinimumSize(d);
 		this.setPreferredSize(d);
 		this.ctrl = c;
@@ -43,11 +43,10 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 		
 		this.setTitle("SCRABBLE");
 		this.setSize(screenSize.width, screenSize.height);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		this.setVisible(true);
 		this.setResizable(false);
 
-		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
 
 		Board board= new Board(m,c);
