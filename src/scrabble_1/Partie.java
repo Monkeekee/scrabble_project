@@ -159,8 +159,21 @@ public class Partie implements Serializable {
 		return res;
 	}
 	
-	public void actuScore(int x1, int y1, int x2, int y2, Dictionnaire d, int somme) {
-		//consulter les regles, faire qqc de recursif ?
+	public void actuScore(int x1, int y1, int x2, int y2) {
+		this.J_actif.score+=this.ptsMot(x1, y1, x2, y2);
+		char dir;
+		if (x1==x2) {
+			dir='V';
+			for (int i = y1 ; y1 <= y2 ; i++ ) {
+				this.J_actif.score += this.ptsMot(this.Touchemot(x1, i, dir)[0], this.Touchemot(x1, i, dir)[2], this.Touchemot(x1, i, dir)[1], this.Touchemot(x1, i, dir)[3]);
+			}
+		}
+		if (y1==y2) {
+			dir='H';
+			for (int i = x1 ; x1 <= x2 ; i++ ) {
+				this.J_actif.score += this.ptsMot(this.Touchemot(i, y1, dir)[0], this.Touchemot(i, y1, dir)[2], this.Touchemot(i, y1, dir)[1], this.Touchemot(i, y1, dir)[3]);
+			}
+		}
 	}
 	
 	public int ptsMot(int x1,int y1, int x2,int y2) {
@@ -227,24 +240,24 @@ public class Partie implements Serializable {
 		int x2=x;
 		int y1=y;
 		int y2=y;
-		if (direction == 'V') {
+		if (direction == 'H') {
 			if (this.plateau.get(x).get(y+1).occupied) {
 				y2+=1;
-				this.Touchemot(x, y2, 'V');
+				this.Touchemot(x, y2, 'H');
 			}
 			if(this.plateau.get(x).get(y-1).occupied) {
 				y1+=-1;
-				this.Touchemot(x, y1, 'V');
+				this.Touchemot(x, y1, 'H');
 			}
 		}
-		if (direction == 'H') {
+		if (direction == 'V') {
 			if (this.plateau.get(x+1).get(y).occupied) {
 				x2+=1;
-				this.Touchemot(x2, y, 'H');
+				this.Touchemot(x2, y, 'V');
 			}
 			if(this.plateau.get(x-1).get(y).occupied) {
 				x1+=-1;
-				this.Touchemot(x1, y, 'H');
+				this.Touchemot(x1, y, 'V');
 			}
 		}
 		if ( x1==x2 && y1==y2) {
