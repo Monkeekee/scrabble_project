@@ -13,6 +13,11 @@ import javax.swing.JPanel;
 public class Interface extends JPanel{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public Modele modl;
 	public Controleur ctrl;
 	
@@ -42,19 +47,19 @@ public class Interface extends JPanel{
 		int sizebutonH=frameHeight/6;
 		
 		//partie boutons
-	    JButton BEnd = new JButton();
-	    JButton BNext = new JButton();
-	    JButton BPioche = new JButton();
-	    JButton Bsupp = new JButton();
+	    JButton BEnd = new JButton("Valider");
+	    JButton BNext = new JButton("Passer");
+	    JButton BPioche = new JButton("Changer");
+	    JButton Bsupp = new JButton("Annuler");
 		
 		BEnd.setBounds(cellsize*15,frameHeight/2 ,sizebutonW,sizebutonH);
 		BEnd.setText("VALIDER MOT");
 		BNext.setBounds(cellsize*15 +sizebutonW,frameHeight/3,sizebutonW,sizebutonH);
 		BNext.setText("FIN DU TOUR");
 		BPioche.setBounds(cellsize*15 + 2*sizebutonW,frameHeight/2,sizebutonW,sizebutonH);
-		BPioche.setText("PIOCHE");
+		BPioche.setText("CHANGER LETTRE.S");
 		Bsupp.setBounds(cellsize*15 + 3*sizebutonW,frameHeight/3,sizebutonW,sizebutonH);
-		Bsupp.setText("SUPPRIMER");
+		Bsupp.setText("ANNULER");
 		
 		this.add(BEnd);
 		this.add(BNext);
