@@ -99,10 +99,12 @@ public class Partie implements Serializable {
 			
 			Random r = new Random();
 			
-			for (int i = 0; i< 7; i++) {
-				int num_L = r.nextInt(this.sacDePioche.size());
-				this.J_actif.main.add(this.sacDePioche.get(num_L));
-				this.sacDePioche.remove(num_L);
+			for (int i = this.J_actif.main.size(); i< 7; i++) {
+				if (!this.sacDePioche.isEmpty()) {
+					int num_L = r.nextInt(this.sacDePioche.size());
+					this.J_actif.main.add(this.sacDePioche.get(num_L));
+					this.sacDePioche.remove(num_L);
+				}
 			}
 		}
 	}

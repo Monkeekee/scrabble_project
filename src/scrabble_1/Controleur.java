@@ -54,7 +54,10 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		Button btn = (Button)e.getSource();
+		if(btn.getName()=="Valider") {
+			
+		}
 	}
 	
 	
