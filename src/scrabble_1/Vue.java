@@ -17,9 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import scrabble_1.GUI.Board;
-import scrabble_1.GUI.Click;
-import scrabble_1.GUI.Move;
+
 
 
 public class Vue extends JFrame implements Observer{//completer avec GUI
@@ -27,19 +25,22 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 	private Dimension d;
 
 	public Modele modl;
+	
+	public Controleur ctrl;
 		
 	
 	public Vue(Controleur c, Modele m) {
 		super();
 		this.setMinimumSize(d);
 		this.setPreferredSize(d);
+		this.ctrl = c;
 		this.modl = m;
 		
 		//insertion de GUI ici
 		//
 		//
 		
-		this.setTitle("SCRABLE");
+		this.setTitle("SCRABBLE");
 		this.setSize(screenSize.width, screenSize.height);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -48,7 +49,7 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 		this.setLocationRelativeTo(null);
 		
 
-		Board board= new Board();
+		Board board= new Board(m,c);
 		this.setContentPane(board);
 		
 		
@@ -120,99 +121,7 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
     
    
 
-	
 
-class Board extends JPanel{
-	
-	int frameWidth=screenSize.width;
-	int frameHeight=screenSize.height;
-	
-
-	public cell temp1,temp2 ;
-	public ArrayList<cell> mainC = new ArrayList<cell>();
-	public ArrayList<ArrayList<cell>> grid1;
-
-	int width=frameWidth -(15*cellsize);
-
-	
-	public Board() {
-
-		ArrayList<ArrayList<cell>> grid1 = new ArrayList<ArrayList<cell>>();
-		this.grid1=grid1;
-		
-		for (int i=0;i<15;i++) {
-			ArrayList<cell> line = new ArrayList<cell>();
-			for (int j=0 ;j<15;j++) {
-				line.add(new cell(spacing + i*cellsize,spacing + j*cellsize,' ',grid[i][j],colors[grid[i][j]],cellsize));
-				}
-			this.grid1.add(line);
-		
-			
-		}
-		System.out.println("CONSTRU matrice:"  + this.grid1);
-		this.repaint();
-	}
-	public void paintComponent(Graphics g) {		
-		this.pPart(g);
-		this.pBoard(g);
-		this.drawMain(g);	
-
-
-		}
-	
-	
-	public void pPart(Graphics g) {
-
-		g.setColor(Color.cyan);
-		g.fillRect(cellsize*15, 0, width, (frameHeight)/3);//partie score
-		g.setColor(Color.gray);
-		g.fillRect(cellsize*15, frameHeight/3, width, (frameHeight)/3);//partie button
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(cellsize*15, (2*frameHeight)/3, width, (frameHeight)/3); //partie lettre
-
-	}
-	
-	public void pBoard(Graphics g){
-		for (int i = 0; i < this.grid1.size(); i++)
-		{
-		    for (int j = 0; j < this.grid1.get(i).size(); j++)
-		    {
-		    	cell cellule=this.grid1.get(i).get(j);
-		    	cellule.paintCell1(g );
-		    } 
-		}
-	}
-	
-	public void createCellMain(){
-		int size=width/7;
-		int i=0;
-		int x=cellsize*15;
-		int y=(2 *(frameHeight)/3);
-		for (char c : main1) {
-			mainC.add(new cell(x+i*size,(frameHeight/12) +y,c,2,Color.YELLOW,size));
-			i=i+1;
-		}
-	
-		
-	}
-	public void drawMain(Graphics g) {
-		this.createCellMain();
-		for(cell cellule: mainC) {
-			cellule.paintCell1(g );
-			cellule.paintLetter(g, CouleurJoeur);
-		}
-	}
-
-
-
-
-	
-}
-	
-
-
-	//
-	
 	
 	
 	
