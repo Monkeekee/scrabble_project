@@ -27,6 +27,7 @@ public class cell {
 	}
 
 	public cell (int value) {
+		this.letter=' ';
 		this.value=value;
 		this.selec=false;
 		this.occupied=false;

@@ -131,6 +131,5 @@ public class Modele extends Observable{
 		this.setChanged();
 		this.notifyObservers(e);
 	}
-
 	
 }

@@ -12,13 +12,12 @@ import java.awt.event.MouseMotionListener;
 import scrabble_1.GUI.Click;
 import scrabble_1.GUI.Move;
 
-public class Controleur implements  ActionListener, MouseListener, MouseMotionListener,KeyListener{ 
+public class Controleur implements  ActionListener, MouseListener, KeyListener{ 
 
 	private Modele modl;
 	
 	public Controleur(Modele modl) {
 		this.modl = modl;
-		
 		
 	}
 	
@@ -61,22 +60,6 @@ public class Controleur implements  ActionListener, MouseListener, MouseMotionLi
 	}
 	
 	
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 
 	@Override
 	public void keyPressed(KeyEvent evt) {
