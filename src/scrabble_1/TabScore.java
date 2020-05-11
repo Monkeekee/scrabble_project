@@ -1,5 +1,6 @@
 package scrabble_1;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,6 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class TabScore extends JPanel{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private Modele modl;
 	private Controleur ctrl;
@@ -19,6 +25,7 @@ public class TabScore extends JPanel{
 	public TabScore(Modele m , Controleur C) {
 		super();
 		this.setVisible(true);
+		this.setLayout(new BorderLayout());
 		this.setSize(300,300); //pif
 		this.modl=m;
 		this.ctrl=C;
@@ -42,10 +49,10 @@ public class TabScore extends JPanel{
 		Bsupp.setBounds(Interface.iWidth*3/4 + 3*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		Bsupp.setText("ANNULER");
 		
-		this.add(BEnd);
-		this.add(BNext);
-		this.add(BPioche);
-		this.add(Bsupp);
+		this.add(BEnd,BorderLayout.SOUTH);
+		this.add(BNext,BorderLayout.SOUTH);
+		this.add(BPioche,BorderLayout.SOUTH);
+		this.add(Bsupp,BorderLayout.SOUTH);
 	}
 	
 	public void drawTabScore(Graphics g) {
