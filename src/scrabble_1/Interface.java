@@ -127,12 +127,16 @@ private static final long serialVersionUID = 1L;
 			
 			for (char c : this.modl.partieEC.J_actif.main) { //on dessine toute la mainM dans la mainV
 				g.setColor(Interface.CouleurJoueur[this.modl.partieEC.J_actif.num_j]); 
-				g.drawRect(i*dw/7, 0, dh, dw/7);
+				
 				g.fillRect(i*dw/7, 0, dh, dw/7);
 				
-				g.setColor(Color.BLACK); 
-				g.drawString(""+c, i*dw/7, dh*2/3);
-				g.drawString(Integer.toString(this.modl.partieEC.PtsLettre.get(c)), i*dw/7, dh*4/5);
+				g.setColor(Color.BLACK);
+				g.drawRect(i*dw/7, 0, dh, dw/7);
+				
+				int mid = dw/14;
+				
+				g.drawString(""+c, mid + i*dw/7, dh/7);
+				g.drawString(Integer.toString(this.modl.partieEC.PtsLettre.get(c)), mid + i*dw/7, 20 + dh/7);
 				i++;
 			}
 			
