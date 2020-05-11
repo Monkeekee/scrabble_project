@@ -67,8 +67,11 @@ public class Board extends JPanel{
 		    		g.setColor(Color.YELLOW);
 		    	}
 
-		    	g.drawRect(i*c, j*c, c, c);
+		    	g.fillRect(i*c, j*c, c, c);
 		    	g.drawString(""+cellule.letter, i*c+c/2, j*c + c/2);
+		    	
+		    	g.setColor(Color.BLACK);
+		    	g.drawRect(i*c, j*c, c, c);
 		    } 
 		}
 	}
