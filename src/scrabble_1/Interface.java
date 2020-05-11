@@ -47,29 +47,6 @@ private static final long serialVersionUID = 1L;
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		
-		int sizebutonW =iWidth/4;
-		int sizebutonH=iHeight/5;
-		
-		//partie boutons
-	    JButton BEnd = new JButton("Valider");
-	    JButton BNext = new JButton("Passer");
-	    JButton BPioche = new JButton("Changer");
-	    JButton Bsupp = new JButton("Annuler");
-		
-		BEnd.setBounds(0,iHeight/2 ,sizebutonW,sizebutonH);
-		BEnd.setText("VALIDER MOT");
-		BNext.setBounds(iWidth*1/4 +sizebutonW,iHeight/2,sizebutonW,sizebutonH);
-		BNext.setText("FIN DU TOUR");
-		BPioche.setBounds(iWidth*2/4 + 2*sizebutonW,iHeight/2,sizebutonW,sizebutonH);
-		BPioche.setText("CHANGER LETTRE.S");
-		Bsupp.setBounds(iWidth*3/4 + 3*sizebutonW,iHeight/2,sizebutonW,sizebutonH);
-		Bsupp.setText("ANNULER");
-		
-		this.add(BEnd);
-		this.add(BNext);
-		this.add(BPioche);
-		this.add(Bsupp);
-		
 		this.main = new Main(m,c);
 		this.Tb = new TabScore(m,c);
 		
