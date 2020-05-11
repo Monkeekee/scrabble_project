@@ -134,6 +134,7 @@ public class Partie implements Serializable {
 		this.plateau.get(x).get(y).y=y ;
 		this.plateau.get(x).get(y).letter=lettre;
 		this.plateau.get(x).get(y).occupied=true;
+		this.J_actif.main.remove(lettre);
 	}
 	
 	public String motEntre(int x1, int y1, int x2, int y2) {
@@ -274,16 +275,62 @@ public class Partie implements Serializable {
 		int [] coo= {x1,x2,y1,y2};
 		return coo;
 	}
+	
 	public void SupprimerMot() {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0;j < 15; j++) {
 				if (this.plateau.get(i).get(j).occupied==true && this.plateau.get(i).get(j).checked==false) {
 					this.plateau.get(i).get(j).occupied = false;
+					this.J_actif.main.add(this.plateau.get(i).get(j).letter);
 					this.plateau.get(i).get(j).letter = ' ';
-					this.plateau.get(i).get(j).selec=false;
+					}
+			}
+		}
+	}
+	
+	public int[] TrouverCaseSelec() {
+		int x = 0;
+		int y = 0;
+		
+		for (int i = 0; i < 15; i++) {
+			
+			for (int j = 0;j < 15; j++) {
+				if (this.plateau.get(i).get(j).selec) {
+					x=i;
+					y=j;
 				}
 			}
 		}
+		int [] coo = {x,y};
+		return coo;
+	}
+	
+	public int[] CooMotJoue() {
+		int x1 = 0;
+		int y1 = 0;
+		int x2 = 0;
+		int y2 = 0;
+		for (int i = 0; i < 15; i++) {
+			
+			for (int j = 0;j < 15; j++) {
+				if (this.plateau.get(i).get(j).occupied && this.plateau.get(i).get(j).checked==false) {
+					if (i<=x1) {
+						x1=i;
+					}
+					if (i>=x2) {
+						x2=i;
+					}
+					if(j<=y1) {
+						y1=j;
+					}
+					if(j>=j) {
+						y2=j;
+					}
+				}
+			}
+		}
+		int[] coo = {x1,y1,x2,y2};
+		return coo;
 	}
 }
 

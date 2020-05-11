@@ -117,6 +117,12 @@ public class Modele extends Observable{
 		this.notifyObservers();
 	}
 	
+	public void SupprimerMot() {
+		this.partieEC.SupprimerMot();
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
 	public boolean confirmerMot(int x1, int y1, int x2, int y2) {
 		return this.partieEC.confirmerMot(x1, y1, x2, y2, this.dico);
 	}
