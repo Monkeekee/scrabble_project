@@ -66,11 +66,7 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Button btn = (Button)e.getSource();
-		if(btn.getName()=="Nouvelle Partie") {
-			
-			
-		}
-		if(btn.getName()=="VALIDER MOT") {
+		if(btn.getName()=="Valider") {
 			int x1 = this.modl.partieEC.CooMotJoue()[0];
 			int y1 = this.modl.partieEC.CooMotJoue()[1];
 			int x2 = this.modl.partieEC.CooMotJoue()[2];
@@ -83,16 +79,16 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 			}
 			this.modl.changeTour();
 		}
-		if(btn.getName()=="FIN DU TOUR") {
+		if(btn.getName()=="Passer") {
 			this.modl.changeTour();
 		}
-		if(btn.getName()=="PIOCHE") {
+		if(btn.getName()=="Changer") {
 			for (int i=0; i<=6;i++) {
 				this.modl.partieEC.changerLettre(i);
 			}
 			
 		}
-		if(btn.getName()=="SUPPRIMER") {
+		if(btn.getName()=="Annuler") {
 			this.modl.partieEC.SupprimerMot();
 		}
 	}
