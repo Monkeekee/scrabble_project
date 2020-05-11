@@ -36,7 +36,8 @@ public class Board extends JPanel{
 	
 	public Board(Modele modl, Controleur C) {
 		super();
-		this.setSize(this.frameWidth,this.frameHeight);
+		this.setPreferredSize(new Dimension(640,360));
+		
 		this.modl = modl;
 		this.ctrl = C;
 		this.setVisible(true);
