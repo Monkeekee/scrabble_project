@@ -48,6 +48,9 @@ public class Modele extends Observable{
 	
 	
 	public Modele() {
+		
+		this.parties = new ArrayList<Partie>();
+		
 		//String[] dicos = {"./dico_a-g.txt","./dico_h-z.txt"};
 		//this.dico = new Dictionnaire(dicos);
 		//this.PlateauLettre = new cell[15][15];
@@ -76,6 +79,8 @@ public class Modele extends Observable{
 	
 	
 	public void enregistrer() {
+		this.parties.add(this.partieEC);
+		
 		XMLEncoder encoder = null;
 		try {
 			FileOutputStream fos = new FileOutputStream("parties.xml");
