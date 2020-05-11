@@ -23,35 +23,38 @@ import javax.swing.JPanel;
 
 public class Vue extends JFrame implements Observer{//completer avec GUI
 	
-	private Dimension d;
+	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	public static int screenWidth = (screenSize.width)-30;
+	public static int screenHeight = (screenSize.height)-30;
+	
 
 	public Modele modl;
 	
 	public Controleur ctrl;
+	
+	//graphique
+	public Board board;
+	
+	public Interface interf;
 		
 	
 	public Vue(Controleur c, Modele m) {
 		super("Scrabble");
-		this.setMinimumSize(d);
-		this.setPreferredSize(d);
 		this.ctrl = c;
 		this.modl = m;
 		
-		//insertion de GUI ici
-		//
-		//
-		
+		//fenetre
 		this.setTitle("SCRABBLE");
-		this.setSize(screenSize.width, screenSize.height);
-		
+		this.setPreferredSize(new Dimension(Vue.screenWidth, Vue.screenHeight));
 		this.setVisible(true);
 		this.setResizable(false);
 		
 		this.setLayout(new BorderLayout());
 
-		Board board= new Board(m,c);
+		this.board= new Board(m,c);
+		this.interf= new Interface(m,c);
 		this.add(board,BorderLayout.WEST);
-		this.add(new Interface(m,c),BorderLayout.EAST);
+		this.add(interf,BorderLayout.EAST);
 		
 		this.repaint();
 
@@ -59,24 +62,11 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 	}
 	
 	
-	//
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-	int screenWidth = (screenSize.width);
-	int screenHeight = (screenSize.height);
 	
-	int spacing=1;
-	int cellsize=(screenHeight)/16;
-	
-	int mcx=-1;
-	int mcy=-1;
-	
-	char tmp = ' ';
-	
-	
-	//public void paint(Graphics g) {
-		
-	//}
+	public void paint(Graphics g) {
+		this.board.repaint();
+		this.interf.repaint();
+	}
 
 	@Override
 	public void update(Observable o, Object arg) {

@@ -26,20 +26,14 @@ private static final long serialVersionUID = 1L;
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	
-	private int frameWidth=screenSize.width-30;
-	private int frameHeight=screenSize.height-30;
+	private static int iWidth= Vue.screenWidth-Board.bWidth;
+	public static int iHeight=Vue.screenHeight;
 	
 	public Main main;//pour les jetons du joueur
 	
 	public Modele modl;
 	public Controleur ctrl;
 	
-	private int spacing=1;
-	private int cellsize = frameHeight/17;
-	
-	private int width= frameWidth -(15*cellsize );
-	
-	public cell temp1,temp2 ;
 	private ArrayList<cell> mainC; //copie jaune en cell du joueur actif
 	
 	
@@ -51,8 +45,8 @@ private static final long serialVersionUID = 1L;
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		
-		int sizebutonW =(frameWidth/6 - cellsize*15)/4;
-		int sizebutonH=frameHeight/6;
+		int sizebutonW =iWidth/4;
+		int sizebutonH=iHeight/5;
 		
 		//partie boutons
 	    JButton BEnd = new JButton("Valider");
@@ -60,13 +54,13 @@ private static final long serialVersionUID = 1L;
 	    JButton BPioche = new JButton("Changer");
 	    JButton Bsupp = new JButton("Annuler");
 		
-		BEnd.setBounds(cellsize*15,frameHeight/2 ,sizebutonW,sizebutonH);
+		BEnd.setBounds(0,iHeight/2 ,sizebutonW,sizebutonH);
 		BEnd.setText("VALIDER MOT");
-		BNext.setBounds(cellsize*15 +sizebutonW,frameHeight/3,sizebutonW,sizebutonH);
+		BNext.setBounds(iWidth*1/4 +sizebutonW,iHeight/2,sizebutonW,sizebutonH);
 		BNext.setText("FIN DU TOUR");
-		BPioche.setBounds(cellsize*15 + 2*sizebutonW,frameHeight/2,sizebutonW,sizebutonH);
+		BPioche.setBounds(iWidth*2/4 + 2*sizebutonW,iHeight/2,sizebutonW,sizebutonH);
 		BPioche.setText("CHANGER LETTRE.S");
-		Bsupp.setBounds(cellsize*15 + 3*sizebutonW,frameHeight/3,sizebutonW,sizebutonH);
+		Bsupp.setBounds(iWidth*3/4 + 3*sizebutonW,iHeight/2,sizebutonW,sizebutonH);
 		Bsupp.setText("ANNULER");
 		
 		this.add(BEnd);
@@ -83,19 +77,10 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	public void paint(Graphics g) {	
-		this.pPart(g);//
 		this.main.drawMain(g);//
 		}
 	
-	public void pPart(Graphics g) { //pas ici
-		g.setColor(Color.cyan);
-		g.fillRect(cellsize*15, 0, width, (frameHeight)/3);//partie score
-		g.setColor(Color.gray);
-		g.fillRect(cellsize*15, frameHeight/3, width, (frameHeight)/3);//partie button
-		//g.setColor(Color.LIGHT_GRAY);
-		//g.fillRect(cellsize*15, (2*frameHeight)/3, width, (frameHeight)/3); //partie lettre
-	}
-	
+
 
 
 	//
@@ -118,7 +103,7 @@ private static final long serialVersionUID = 1L;
 		public Main(Modele m, Controleur C) {
 			super();
 			this.setVisible(true);
-			this.setSize(300,300); //pif
+			this.setSize(Interface.iWidth,Interface.iHeight/3); //pif
 			this.modl=m;
 			this.ctrl=C;
 			this.repaint();

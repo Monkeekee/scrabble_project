@@ -16,15 +16,10 @@ public class Board extends JPanel{
 	public Modele modl;
 	public Controleur ctrl;
 	
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	static int bWidth = Integer.min(Vue.screenHeight,Vue.screenWidth*2/3);;
+	static int bHeigth = Integer.min(Vue.screenHeight,Board.bWidth);
 	
-	private int frameWidth=screenSize.width-30;
-	private int frameHeight=screenSize.height-30;
-	
-	
-	private int cellsize = frameHeight/15;
-	
-	private int width= 15*cellsize;
+	private int cellsize = Board.bHeigth/15;
 	
 	public cell temp1,temp2 ;
 	private ArrayList<cell> mainC; //copie jaune en cell du joueur actif
@@ -36,7 +31,7 @@ public class Board extends JPanel{
 	
 	public Board(Modele modl, Controleur C) {
 		super();
-		this.setPreferredSize(new Dimension(2*screenSize.width/3,screenSize.height));
+		this.setPreferredSize(new Dimension(Board.bWidth,Board.bHeigth));
 		this.modl = modl;
 		this.ctrl = C;
 		this.setVisible(true);
