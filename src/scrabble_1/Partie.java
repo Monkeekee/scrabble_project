@@ -286,7 +286,7 @@ public class Partie implements Serializable {
 		}
 	}
 	
-	public int[] CaseSelec() {
+	public int[] TrouverCaseSelec() {
 		int x = 0;
 		int y = 0;
 		
@@ -303,6 +303,33 @@ public class Partie implements Serializable {
 		return coo;
 	}
 	
+	public int[] CooMotJoue() {
+		int x1 = 0;
+		int y1 = 0;
+		int x2 = 0;
+		int y2 = 0;
+		for (int i = 0; i < 15; i++) {
+			
+			for (int j = 0;j < 15; j++) {
+				if (this.plateau.get(i).get(j).occupied && this.plateau.get(i).get(j).checked==false) {
+					if (i<=x1) {
+						x1=i;
+					}
+					if (i>=x2) {
+						x2=i;
+					}
+					if(j<=y1) {
+						y1=j;
+					}
+					if(j>=j) {
+						y2=j;
+					}
+				}
+			}
+		}
+		int[] coo = {x1,y1,x2,y2};
+		return coo;
+	}
 }
 
 
