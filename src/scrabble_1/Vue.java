@@ -50,8 +50,8 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 		this.setLayout(new BorderLayout());
 
 		Board board= new Board(m,c);
-		this.add(board);
-		this.add(new Interface(m,c));
+		this.add(board,BorderLayout.EAST);
+		this.add(new Interface(m,c),BorderLayout.WEST);
 
 		this.repaint();
 

@@ -45,13 +45,14 @@ public class Partie implements Serializable {
 		this.Jrs = new Player[NbrJ];
 		this.Sac = new HashMap<Character,Integer>();
 		this.PtsLettre = new HashMap<Character,Integer>();
+		this.sacDePioche = new ArrayList<Character>();
 	
 		for (int i=0; i<= 26; i++) {
 			this.Sac.put(lettres[i], quantite[i]);
 			this.PtsLettre.put(lettres[i], points[i]);
-			
 			for (int x = 0; x < quantite[i]; x++) { //le sac de pioche doit rester uniforme en quantité
 				this.sacDePioche.add(lettres[i]);
+				
 			}
 		}
 		
