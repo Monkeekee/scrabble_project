@@ -73,14 +73,6 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 	
 	char tmp = ' ';
 	
-	Color CouleurJoeur = Color.MAGENTA;
-	
-	char[] main1 = {'l' , 'a' , 'b' , 'c' , 'd' , 'e','g'};
-	
-	Color[] colors = {Color.BLACK,Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};	
-	
-	
-	
 	
 	//public void paint(Graphics g) {
 		
