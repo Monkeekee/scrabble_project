@@ -45,7 +45,7 @@ private static final long serialVersionUID = 1L;
 	
 	public Interface(Modele m, Controleur c) {
 		super();
-		this.setSize(300,300); //pif
+		this.setPreferredSize(new Dimension(640,360));
 		this.ctrl =c;
 		this.modl =m;
 		this.setLayout(new BorderLayout());
