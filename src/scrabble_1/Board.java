@@ -38,6 +38,7 @@ public class Board extends JPanel{
 	public Board(Modele modl, Controleur C) {
 		this.modl = modl;
 		this.ctrl = C;
+		this.setVisible(true);
 		this.repaint();
 
 	}

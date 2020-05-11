@@ -82,9 +82,9 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 	
 	
 	
-	public void paint(Graphics g) {
+	//public void paint(Graphics g) {
 		
-	}
+	//}
 
 	@Override
 	public void update(Observable o, Object arg) {

@@ -16,10 +16,18 @@ public class Interface extends JPanel{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 	
 	public Modele modl;
 	public Controleur ctrl;
+	
+	
+	public static Color[] CouleurJoeur = {Color.MAGENTA, Color.BLUE, Color.GREEN, Color.YELLOW} ;
+	
+	public static Color[] ColorCase = {Color.BLACK,Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};	
+	
+	
+	
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	
@@ -41,7 +49,7 @@ public class Interface extends JPanel{
 		this.ctrl =c;
 		this.modl =m;
 		this.setLayout(new GridLayout());
-		
+		this.setVisible(true);
 		
 		int sizebutonW =(frameWidth/6 - cellsize*15)/4;
 		int sizebutonH=frameHeight/6;
@@ -68,7 +76,8 @@ public class Interface extends JPanel{
 		this.repaint();
 	}
 	
-	public void paint(Graphics g) {		
+	public void paint(Graphics g) {	
+		this.createCellMain();
 		this.pPart(g);//
 		this.drawMain(g);//
 		}
