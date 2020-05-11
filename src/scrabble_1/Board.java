@@ -22,7 +22,7 @@ public class Board extends JPanel{
 	private int frameHeight=screenSize.height-30;
 	
 	
-	private int cellsize = frameHeight/17;
+	private int cellsize = frameHeight/15;
 	
 	private int width= 15*cellsize;
 	
@@ -36,7 +36,7 @@ public class Board extends JPanel{
 	
 	public Board(Modele modl, Controleur C) {
 		super();
-		this.setPreferredSize(new Dimension(640,360));
+		this.setPreferredSize(new Dimension(2*screenSize.width/3,screenSize.height));
 		this.modl = modl;
 		this.ctrl = C;
 		this.setVisible(true);
