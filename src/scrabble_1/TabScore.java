@@ -27,33 +27,13 @@ public class TabScore extends JPanel{
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
-		this.setSize(300,300); //pif
+		this.setPreferredSize(new Dimension(300,300));
+		this.setBackground(Color.ORANGE);
 		this.modl=m;
 		this.ctrl=C;
 		this.repaint();
 		
-		int sizebutonW =Interface.iWidth/4;
-		int sizebutonH=Interface.iHeight/5;
-		
-		//partie boutons
-	    JButton BEnd = new JButton("Valider");
-	    JButton BNext = new JButton("Passer");
-	    JButton BPioche = new JButton("Changer");
-	    JButton Bsupp = new JButton("Annuler");
-		
-		BEnd.setBounds(0,Interface.iHeight/2 ,sizebutonW,sizebutonH);
-		BEnd.setText("VALIDER MOT");
-		BNext.setBounds(Interface.iWidth*1/4 +sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
-		BNext.setText("FIN DU TOUR");
-		BPioche.setBounds(Interface.iWidth*2/4 + 2*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
-		BPioche.setText("CHANGER LETTRE.S");
-		Bsupp.setBounds(Interface.iWidth*3/4 + 3*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
-		Bsupp.setText("ANNULER");
-		
-		this.add(BEnd,BorderLayout.SOUTH);
-		this.add(BNext,BorderLayout.SOUTH);
-		this.add(BPioche,BorderLayout.SOUTH);
-		this.add(Bsupp,BorderLayout.SOUTH);
+
 	}
 	
 	public void drawTabScore(Graphics g) {

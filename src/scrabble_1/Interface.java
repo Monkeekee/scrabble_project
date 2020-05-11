@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+
+
 public class Interface extends JPanel{
 	
 	
@@ -51,6 +53,31 @@ private static final long serialVersionUID = 1L;
 		this.Tb = new TabScore(m,c);
 		
 		this.main.setVisible(true);
+		
+		int sizebutonW =Interface.iWidth/5;
+		int sizebutonH=Interface.iHeight/5;
+		
+		//partie boutons
+	    JButton BEnd = new JButton("Valider");
+	    JButton BNext = new JButton("Passer");
+	    JButton BPioche = new JButton("Changer");
+	    JButton Bsupp = new JButton("Annuler");
+	    
+	   
+		BEnd.setBounds(0,Interface.iHeight/2 ,sizebutonW,sizebutonH);
+		BEnd.setText("VALIDER MOT");
+		BNext.setBounds(sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
+		BNext.setText("FIN DU TOUR");
+		BPioche.setBounds(2*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
+		BPioche.setText("CHANGER LETTRE.S");
+		Bsupp.setBounds(3*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
+		Bsupp.setText("ANNULER");
+		
+		this.add(BEnd);
+		this.add(BNext);
+		this.add(BPioche);
+		this.add(Bsupp);
+		
 		this.add(main,BorderLayout.SOUTH);
 		this.add(Tb,BorderLayout.NORTH);
 		
