@@ -22,16 +22,15 @@ public class Board extends JPanel{
 	private int frameHeight=screenSize.height;
 	
 	
-	private int spacing=1;
-	private int cellsize = frameHeight/16;
+	private int cellsize = frameHeight/15;
 	
-	private int width= frameWidth -(15*cellsize );
+	private int width= 15*cellsize;
 	
 	public cell temp1,temp2 ;
 	private ArrayList<cell> mainC; //copie jaune en cell du joueur actif
 
 	
-
+	public static Color[] ColorCase = {Color.BLACK,Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};	
 	
 
 	
@@ -57,8 +56,17 @@ public class Board extends JPanel{
 		{
 		    for (int j = 0; j < 15; j++)
 		    {
+		    	int c = this.cellsize;
+		    	g.setColor(Board.ColorCase[Modele.Plateau[i][j]+1]);
+		    	
+		    	
 		    	cell cellule=this.modl.partieEC.plateau.get(i).get(j);
-		    	cellule.paintCell1(g );
+		    	if (cellule.checked) {
+		    		g.setColor(Color.YELLOW);
+		    	}
+
+		    	g.drawRect(i*c, j*c, c, c);
+		    	g.drawString(""+cellule.letter, i*c+c/2, j*c + c/2);
 		    } 
 		}
 	}

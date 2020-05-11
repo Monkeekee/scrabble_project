@@ -1,5 +1,6 @@
 package scrabble_1;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -18,14 +19,8 @@ public class Interface extends JPanel{
 	 */
 private static final long serialVersionUID = 1L;
 	
-	public Modele modl;
-	public Controleur ctrl;
-	
-	
-	public static Color[] CouleurJoeur = {Color.MAGENTA, Color.BLUE, Color.GREEN, Color.YELLOW} ;
-	
-	public static Color[] ColorCase = {Color.BLACK,Color.GREEN,Color.LIGHT_GRAY,Color.RED,Color.CYAN,Color.BLUE,Color.ORANGE};	
-	
+
+	public static Color[] CouleurJoueur = {Color.MAGENTA, Color.BLUE, Color.GREEN, Color.YELLOW} ;
 	
 	
 	
@@ -34,6 +29,10 @@ private static final long serialVersionUID = 1L;
 	private int frameWidth=screenSize.width;
 	private int frameHeight=screenSize.height;
 	
+	public Main main;//pour les jetons du joueur
+	
+	public Modele modl;
+	public Controleur ctrl;
 	
 	private int spacing=1;
 	private int cellsize = frameHeight/16;
@@ -48,7 +47,7 @@ private static final long serialVersionUID = 1L;
 		super();
 		this.ctrl =c;
 		this.modl =m;
-		this.setLayout(new GridLayout());
+		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		
 		int sizebutonW =(frameWidth/6 - cellsize*15)/4;
@@ -73,13 +72,18 @@ private static final long serialVersionUID = 1L;
 		this.add(BNext);
 		this.add(BPioche);
 		this.add(Bsupp);
+		
+		this.main = new Main(m,c);
+		this.main.setLayout(new GridLayout());
+		this.main.setVisible(true);
+		this.add(main);
+		
 		this.repaint();
 	}
 	
 	public void paint(Graphics g) {	
-		this.createCellMain();
 		this.pPart(g);//
-		this.drawMain(g);//
+		this.main.drawMain(g);//
 		}
 	
 	public void pPart(Graphics g) { //pas ici
@@ -87,29 +91,64 @@ private static final long serialVersionUID = 1L;
 		g.fillRect(cellsize*15, 0, width, (frameHeight)/3);//partie score
 		g.setColor(Color.gray);
 		g.fillRect(cellsize*15, frameHeight/3, width, (frameHeight)/3);//partie button
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(cellsize*15, (2*frameHeight)/3, width, (frameHeight)/3); //partie lettre
+		//g.setColor(Color.LIGHT_GRAY);
+		//g.fillRect(cellsize*15, (2*frameHeight)/3, width, (frameHeight)/3); //partie lettre
 	}
 	
-	
-	public void createCellMain(){
-		int size=width/7;
-		int x=cellsize*15;
-		int y=(2 *(frameHeight)/3);
-		int i = 0;
-		for (char c : this.modl.partieEC.J_actif.main) {
-			mainC.add(new cell(x+i*size,(frameHeight/12) +y,c,2,Color.YELLOW,size));
-			i++;
+
+
+	//
+	//pour stocker les 7 jetons
+	//
+	public class Main extends JPanel{
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		public Modele modl;
+		public Controleur ctrl;
+		
+		
+		public void paint(Graphics g) {
+			this.drawMain(g);
 		}
-	
+		
+		public Main(Modele m, Controleur C) {
+			this.modl=m;
+			this.ctrl=C;
+			this.repaint();
+		}
+		
+		public void drawMain(Graphics g) {
+			Dimension d = this.getSize();
+			int dw = d.width;
+			int dh = d.height;
+			
+			
+			int i = 0;
+			
+			for (char c : this.modl.partieEC.J_actif.main) { //on dessine toute la mainM dans la mainV
+				g.setColor(Interface.CouleurJoueur[this.modl.partieEC.J_actif.num_j]); 
+				g.drawRect(i*dw/7, 0, dh, dw/7);
+				g.fillRect(i*dw/7, 0, dh, dw/7);
+				
+				g.setColor(Color.BLACK); 
+				g.drawString(""+c, i*dw/7, dh*2/3);
+				g.drawString(Integer.toString(this.modl.partieEC.PtsLettre.get(c)), i*dw/7, dh*4/5);
+				i++;
+			}
+			
+			
+			
+		}
 		
 	}
-	public void drawMain(Graphics g) {
-		this.createCellMain();
-		for(cell cellule: mainC) {
-			cellule.paintCell1(g );
-			cellule.paintLetter(g, Color.BLACK);
-		}
-	}
+	
+	
+	
+	
+	
+	
 
 }
