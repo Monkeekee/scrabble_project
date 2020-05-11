@@ -24,8 +24,8 @@ import javax.swing.JPanel;
 public class Vue extends JFrame implements Observer{//completer avec GUI
 	
 	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static int screenWidth = (screenSize.width)-30;
-	public static int screenHeight = (screenSize.height)-30;
+	public static int screenWidth = screenSize.width-100;
+	public static int screenHeight = screenSize.height-100;
 	
 
 	public Modele modl;

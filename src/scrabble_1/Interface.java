@@ -50,10 +50,9 @@ private static final long serialVersionUID = 1L;
 		this.main = new Main(m,c);
 		this.Tb = new TabScore(m,c);
 		
-		this.main.setLayout(new GridLayout());
 		this.main.setVisible(true);
-		this.add(main);
-		this.add(Tb);
+		this.add(main,BorderLayout.SOUTH);
+		this.add(Tb,BorderLayout.NORTH);
 		
 		this.repaint();
 	}
