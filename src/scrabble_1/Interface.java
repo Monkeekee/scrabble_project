@@ -26,8 +26,8 @@ private static final long serialVersionUID = 1L;
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	
-	private int frameWidth=screenSize.width;
-	private int frameHeight=screenSize.height;
+	private int frameWidth=screenSize.width-30;
+	private int frameHeight=screenSize.height-30;
 	
 	public Main main;//pour les jetons du joueur
 	
@@ -35,7 +35,7 @@ private static final long serialVersionUID = 1L;
 	public Controleur ctrl;
 	
 	private int spacing=1;
-	private int cellsize = frameHeight/16;
+	private int cellsize = frameHeight/17;
 	
 	private int width= frameWidth -(15*cellsize );
 	
@@ -45,6 +45,7 @@ private static final long serialVersionUID = 1L;
 	
 	public Interface(Modele m, Controleur c) {
 		super();
+		this.setSize(300,300); //pif
 		this.ctrl =c;
 		this.modl =m;
 		this.setLayout(new BorderLayout());
@@ -115,6 +116,9 @@ private static final long serialVersionUID = 1L;
 		}
 		
 		public Main(Modele m, Controleur C) {
+			super();
+			this.setVisible(true);
+			this.setSize(300,300); //pif
 			this.modl=m;
 			this.ctrl=C;
 			this.repaint();

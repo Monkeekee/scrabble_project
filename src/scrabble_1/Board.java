@@ -18,11 +18,11 @@ public class Board extends JPanel{
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	
-	private int frameWidth=screenSize.width;
-	private int frameHeight=screenSize.height;
+	private int frameWidth=screenSize.width-30;
+	private int frameHeight=screenSize.height-30;
 	
 	
-	private int cellsize = frameHeight/15;
+	private int cellsize = frameHeight/17;
 	
 	private int width= 15*cellsize;
 	
@@ -35,6 +35,8 @@ public class Board extends JPanel{
 
 	
 	public Board(Modele modl, Controleur C) {
+		super();
+		this.setSize(this.frameWidth,this.frameHeight);
 		this.modl = modl;
 		this.ctrl = C;
 		this.setVisible(true);
