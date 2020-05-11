@@ -134,6 +134,7 @@ public class Partie implements Serializable {
 		this.plateau.get(x).get(y).y=y ;
 		this.plateau.get(x).get(y).letter=lettre;
 		this.plateau.get(x).get(y).occupied=true;
+		this.J_actif.main.remove(lettre);
 	}
 	
 	public String motEntre(int x1, int y1, int x2, int y2) {
@@ -280,8 +281,9 @@ public class Partie implements Serializable {
 			for (int j = 0;j < 15; j++) {
 				if (this.plateau.get(i).get(j).occupied==true && this.plateau.get(i).get(j).checked==false) {
 					this.plateau.get(i).get(j).occupied = false;
+					this.J_actif.main.add(this.plateau.get(i).get(j).letter);
 					this.plateau.get(i).get(j).letter = ' ';
-				}
+					}
 			}
 		}
 	}
