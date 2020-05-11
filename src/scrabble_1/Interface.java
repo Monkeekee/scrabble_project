@@ -26,10 +26,12 @@ private static final long serialVersionUID = 1L;
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	
-	private static int iWidth= Vue.screenWidth-Board.bWidth;
+	public static int iWidth= Vue.screenWidth-Board.bWidth;
 	public static int iHeight=Vue.screenHeight;
 	
 	public Main main;//pour les jetons du joueur
+	
+	public TabScore Tb;
 	
 	public Modele modl;
 	public Controleur ctrl;
@@ -69,9 +71,12 @@ private static final long serialVersionUID = 1L;
 		this.add(Bsupp);
 		
 		this.main = new Main(m,c);
+		this.Tb = new TabScore(m,c);
+		
 		this.main.setLayout(new GridLayout());
 		this.main.setVisible(true);
 		this.add(main);
+		this.add(Tb);
 		
 		this.repaint();
 	}
@@ -103,7 +108,7 @@ private static final long serialVersionUID = 1L;
 		public Main(Modele m, Controleur C) {
 			super();
 			this.setVisible(true);
-			this.setSize(Interface.iWidth,Interface.iHeight/3); //pif
+			this.setPreferredSize(new Dimension(Interface.iWidth,Interface.iHeight/3)); //pif
 			this.modl=m;
 			this.ctrl=C;
 			this.repaint();
