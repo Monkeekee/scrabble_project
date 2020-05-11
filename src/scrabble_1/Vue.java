@@ -47,7 +47,7 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 		this.setTitle("SCRABBLE");
 		this.setPreferredSize(new Dimension(Vue.screenWidth, Vue.screenHeight));
 		this.setVisible(true);
-		this.setResizable(false);
+		this.setResizable(true);
 		
 		this.setLayout(new BorderLayout());
 
@@ -63,10 +63,10 @@ public class Vue extends JFrame implements Observer{//completer avec GUI
 	
 	
 	
-	public void paint(Graphics g) {
-		this.board.repaint();
-		this.interf.repaint();
-	}
+	//public void paint(Graphics g) {
+	//	this.board.repaint();
+	//	this.interf.repaint();
+	//}
 
 	@Override
 	public void update(Observable o, Object arg) {
