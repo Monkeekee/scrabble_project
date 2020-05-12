@@ -11,10 +11,13 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JButton;
+
 
 public class Controleur implements  ActionListener, MouseListener, KeyListener, WindowListener{ 
 
 	private Modele modl;
+	
 	
 	public Controleur(Modele modl) {
 		this.modl = modl;
@@ -65,8 +68,8 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		Button btn = (Button)e.getSource();
-		if(btn.getName()=="Valider") {
+		JButton btn = (JButton) e.getSource();
+		if(btn.getName()== "Valider" ) {
 			int x1 = this.modl.partieEC.CooMotJoue()[0];
 			int y1 = this.modl.partieEC.CooMotJoue()[1];
 			int x2 = this.modl.partieEC.CooMotJoue()[2];
@@ -98,8 +101,8 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 	@Override
 	public void keyPressed(KeyEvent evt) {
 		// TODO Auto-generated method stub
-		char Caract = evt.getKeyChar();
-		this.modl.PlacerLettre(Caract, this.modl.partieEC.TrouverCaseSelec()[0],this.modl.partieEC.TrouverCaseSelec()[1] );
+		
+		
 
 	}
 
@@ -114,9 +117,12 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
+	public void keyTyped(KeyEvent evt) {
 		// TODO Auto-generated method stub
-		
+		char Caract = evt.getKeyChar();
+		int x = this.modl.partieEC.TrouverCaseSelec()[0];
+		int y = this.modl.partieEC.TrouverCaseSelec()[1];
+		this.modl.PlacerLettre(Caract,x ,y );
 	}
 
 

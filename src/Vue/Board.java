@@ -42,7 +42,7 @@ public class Board extends JPanel implements Observer{
 		this.ctrl = C;
 		this.setVisible(true);
 		this.repaint();
-
+		this.addMouseListener(ctrl);
 	}
 	
 	
