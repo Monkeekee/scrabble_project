@@ -49,7 +49,6 @@ public class Modele extends Observable{
 	
 	public Modele() {
 		
-		this.parties = new ArrayList<Partie>();
 		
 		//String[] dicos = {"./dico_a-g.txt","./dico_h-z.txt"};
 		//this.dico = new Dictionnaire(dicos);
@@ -69,6 +68,8 @@ public class Modele extends Observable{
 				}finally {
 					if (decoder != null) decoder.close();
 			}
+		}else {
+			this.parties = new ArrayList<Partie>();
 		}
 	}
 	
@@ -79,6 +80,7 @@ public class Modele extends Observable{
 	
 	
 	public void enregistrer() {
+		
 		this.parties.add(this.partieEC);
 		
 		XMLEncoder encoder = null;
@@ -94,6 +96,7 @@ public class Modele extends Observable{
 		}finally {
 			if (encoder != null) encoder.close();
 		}
+		System.out.println("partie sauvegardée");
 	}
 
 	public ArrayList<Partie> getParties() {

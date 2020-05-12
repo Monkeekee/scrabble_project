@@ -120,14 +120,7 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 	@Override
 	public void keyPressed(KeyEvent evt) {
 		// TODO Auto-generated method stub
-		
-		char Caract = evt.getKeyChar();
-		int[] coor = this.modl.partieEC.TrouverCaseSelec();
-		if (!coor.equals(null)) {
-			this.modl.PlacerLettre(Caract,coor[1] ,coor[2] );
-		}
-		
-		System.out.print(Caract);
+
 		
 
 	}
@@ -146,6 +139,13 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 	public void keyTyped(KeyEvent evt) {
 		// TODO Auto-generated method stub
 		
+		char Caract = evt.getKeyChar();
+		int[] coor = this.modl.partieEC.TrouverCaseSelec();
+		if (!coor.equals(null)) {
+			this.modl.PlacerLettre(Caract,coor[1] ,coor[2] );
+		}
+		
+		System.out.print(Caract);
 	}
 
 

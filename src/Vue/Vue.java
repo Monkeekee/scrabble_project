@@ -50,7 +50,7 @@ public class Vue extends JFrame implements Observer{
 		super("Scrabble");
 		this.ctrl = c;
 		this.modl = m;
-		this.addKeyListener(ctrl);
+		//this.addKeyListener(ctrl);
 		
 		//fenetre
 		this.setLocationRelativeTo(null);
