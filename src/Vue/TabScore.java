@@ -29,10 +29,10 @@ public class TabScore extends JPanel{
 		super();
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
-		this.setVisible(true);
-		this.setSize(Interface.iWidth,Interface.iHeight*2/3);
-		this.setPreferredSize(new Dimension(300,300));
-		this.setBackground(Color.ORANGE);
+		//this.setVisible(true);
+		//this.setSize(Interface.iWidth,Interface.iHeight*2/3);
+		this.setPreferredSize(new Dimension(Interface.iWidth,Interface.iHeight/3));
+		//this.setBackground(Color.ORANGE);
 		this.modl=m;
 		this.ctrl=C;
 		this.repaint();
@@ -42,14 +42,16 @@ public class TabScore extends JPanel{
 	
 	public void drawTabScore(Graphics g) {
 		Dimension d = this.getSize();
-		int dw = d.width;
-		int dh = d.height;
-		
+		int dw = Interface.iWidth;
+		int dh = Interface.iHeight;
+		int n = this.modl.NbJ;
 		
 		for (int i = 0 ; i<this.modl.NbJ ; i++ ) {
 			 g.setColor(Interface.CouleurJoueur[i]);
-			 g.drawRect(i*dw/4, 0, dh, dw/4);
-			 g.drawString(Integer.toString(this.modl.partieEC.Jrs[i].score), i*dw/4, dh*2/3);
+			 g.fillRect(i*dw/n, 0, dw/n, dh/5);
+			 g.setColor(Color.BLACK);
+			 g.drawRect(i*dw/n, 0, dw/n, dh/5);
+			 g.drawString(Integer.toString(this.modl.partieEC.Jrs[i].score), i*dw/n+dw/(2*n), dh/10);
 			 
 			 
 		}
