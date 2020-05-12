@@ -132,11 +132,13 @@ public class Partie implements Serializable {
 	}
 	
 	public void PlacerLettre(char lettre,int x, int y) {
-		this.plateau.get(x).get(y).x=x ;
-		this.plateau.get(x).get(y).y=y ;
-		this.plateau.get(x).get(y).letter=lettre;
-		this.plateau.get(x).get(y).occupied=true;
-		this.J_actif.main.remove(lettre);
+		if (this.J_actif.main.contains((lettre))){
+			this.plateau.get(x).get(y).x=x ;
+			this.plateau.get(x).get(y).y=y ;
+			this.plateau.get(x).get(y).letter=lettre;
+			this.plateau.get(x).get(y).occupied=true;
+			this.J_actif.main.remove(lettre);
+		}
 	}
 	
 	public String motEntre(int x1, int y1, int x2, int y2) {
