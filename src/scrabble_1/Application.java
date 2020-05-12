@@ -66,7 +66,7 @@ public class Application {
 		
 		m.addObserver(v);
 		
-		
+		v.setVisible(true);
 		
 		
 		//m.newPartie(2);

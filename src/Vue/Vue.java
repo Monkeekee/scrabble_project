@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -56,11 +57,10 @@ public class Vue extends JFrame implements Observer{
 		this.setMinimumSize(new Dimension(Vue.screenWidth+30, Vue.screenHeight+30));
 		this.setPreferredSize(new Dimension(Vue.screenWidth+30, Vue.screenHeight+30));
 		this.setResizable(true);
-		this.setVisible(true);
 		
 		
-		BorderLayout BL = new BorderLayout();
-		this.setLayout(BL);
+		GridLayout L = new GridLayout();
+		this.setLayout(L);
 
         
         //GridBagConstraints gbcG = new GridBagConstraints();
