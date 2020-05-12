@@ -20,7 +20,16 @@ public class Player {
 		this.main = new ArrayList<Character>();
 	}
 	
-	
+	public int indiceLettre(char c) {
+		int i=0;
+		for (char cc : this.main) {
+			if (cc == c) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
 	
 	
 }
