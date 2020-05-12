@@ -59,7 +59,7 @@ public class Vue extends JFrame implements Observer{
 		this.setResizable(true);
 		
 		
-		GridLayout L = new GridLayout();
+		BorderLayout L = new BorderLayout();
 		this.setLayout(L);
 
         
@@ -84,16 +84,18 @@ public class Vue extends JFrame implements Observer{
 		Main mn = new Main(m,c);
 		TabScore Tb = new TabScore(m,c);
 		RangeBtn Rb = new RangeBtn(m,c);
-
-		this.add(Rb,BorderLayout.CENTER);
-		this.add(mn,BorderLayout.SOUTH);
-		this.add(Tb,BorderLayout.NORTH);
+		
+		
+		
+		//this.add(Rb,BorderLayout.EAST);
+		//this.add(mn,BorderLayout.SOUTH);
+		//this.add(Tb,BorderLayout.CENTER);
 		this.board= new Board(m,c);
-		//this.interf= new Interface(m,c);
+		this.interf= new Interface(m,c);
 		
 		this.add(board,BorderLayout.WEST);
-					
-		//this.add(interf,BorderLayout.EAST);
+		
+		this.add(interf,BorderLayout.EAST);
 		
 		this.repaint();
 

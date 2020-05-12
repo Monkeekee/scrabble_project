@@ -48,7 +48,7 @@ public class Main extends JPanel{
 			g.setColor(Color.BLACK);
 			g.drawRect(i*dw/7, 0, dh, dw/7);
 			
-			int mid = dw/14;
+			int mid = dw/15;
 			
 			g.drawString(""+c, mid + i*dw/7, dh/7);
 			g.drawString(Integer.toString(this.modl.partieEC.PtsLettre.get(c)), mid + i*dw/7, 20 + dh/7);
