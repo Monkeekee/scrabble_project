@@ -5,8 +5,6 @@ public class cell {
 	
 	public char letter;
 	public int value;
-	public int x;
-	public int y;
 	public int cellsize;  //doit dépendre seulement de la vue, a déplacer aillleurs
 	public boolean selec;
 	public boolean occupied;

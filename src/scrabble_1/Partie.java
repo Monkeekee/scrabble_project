@@ -135,11 +135,19 @@ public class Partie implements Serializable {
 	
 	public void PlacerLettre(char lettre,int x, int y) {
 		if (this.J_actif.main.contains((lettre))){
-			this.plateau.get(x).get(y).x=x ;
-			this.plateau.get(x).get(y).y=y ;
-			this.plateau.get(x).get(y).letter=lettre;
-			this.plateau.get(x).get(y).occupied=true;
-			this.J_actif.main.remove(this.J_actif.indiceLettre(lettre));
+			cell cl = this.plateau.get(x).get(y);
+			if (!cl.checked) {
+				if (cl.occupied) {
+					this.J_actif.main.add(cl.letter);
+				}
+				
+				this.plateau.get(x).get(y).letter=lettre;
+				this.plateau.get(x).get(y).occupied=true;
+				this.J_actif.main.remove(this.J_actif.indiceLettre(lettre));
+			}
+			
+			
+			
 		}
 	}
 	
