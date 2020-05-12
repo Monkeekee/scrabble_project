@@ -99,7 +99,7 @@ public class Vue extends JFrame implements Observer{
 		this.add(interf,BorderLayout.EAST);
 		
 		this.repaint();
-
+		this.addKeyListener(ctrl);
 		
 	}
 	
