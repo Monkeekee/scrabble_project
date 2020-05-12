@@ -3,13 +3,15 @@ package Vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JPanel;
 
 import scrabble_1.Controleur;
 import scrabble_1.Modele;
 
-public class Main extends JPanel{
+public class Main extends JPanel implements Observer{
 
 	/**
 	 * 
@@ -56,6 +58,12 @@ public class Main extends JPanel{
 		}
 		
 		
+		
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
 		
 	}
 	

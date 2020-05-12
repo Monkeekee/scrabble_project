@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -11,7 +13,7 @@ import javax.swing.JPanel;
 import scrabble_1.Controleur;
 import scrabble_1.Modele;
 
-public class TabScore extends JPanel{
+public class TabScore extends JPanel implements Observer{
 	
 	/**
 	 * 
@@ -55,6 +57,12 @@ public class TabScore extends JPanel{
 			 
 			 
 		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

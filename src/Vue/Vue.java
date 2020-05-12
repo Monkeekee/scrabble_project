@@ -81,9 +81,9 @@ public class Vue extends JFrame implements Observer{
 
         //this.setLayout(gridbag);
 
-		Main mn = new Main(m,c);
-		TabScore Tb = new TabScore(m,c);
-		RangeBtn Rb = new RangeBtn(m,c);
+		//Main mn = new Main(m,c);
+		//TabScore Tb = new TabScore(m,c);
+		//RangeBtn Rb = new RangeBtn(m,c);
 		
 		
 		

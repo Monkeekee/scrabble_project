@@ -2,6 +2,8 @@ package Vue;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -9,7 +11,7 @@ import javax.swing.JPanel;
 import scrabble_1.Controleur;
 import scrabble_1.Modele;
 
-public class RangeBtn extends JPanel{
+public class RangeBtn extends JPanel implements Observer{
 	//**
 	private static final long serialVersionUID = 1L;
 	public Modele modl;
@@ -38,16 +40,28 @@ public class RangeBtn extends JPanel{
 	   
 		//BEnd.setBounds(0,Interface.iHeight/2 ,sizebutonW,sizebutonH);
 		BEnd.setText("VALIDER MOT");
+		BEnd.addActionListener(ctrl);
 		//BNext.setBounds(sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		BNext.setText("FIN DU TOUR");
+		BNext.addActionListener(ctrl);
 		//BPioche.setBounds(2*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		BPioche.setText("CHANGER LETTRE.S");
+		BPioche.addActionListener(ctrl);
 		//Bsupp.setBounds(3*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		Bsupp.setText("ANNULER");
+		Bsupp.addActionListener(ctrl);
 		
 		this.add(BEnd);
 		this.add(BNext);
 		this.add(BPioche);
 		this.add(Bsupp);
+	}
+
+
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 }

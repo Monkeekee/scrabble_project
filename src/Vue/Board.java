@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -15,7 +17,7 @@ import scrabble_1.Controleur;
 import scrabble_1.Modele;
 import scrabble_1.cell;
 
-public class Board extends JPanel{
+public class Board extends JPanel implements Observer{
 	
 	public Modele modl;
 	public Controleur ctrl;
@@ -73,6 +75,14 @@ public class Board extends JPanel{
 		    	g.drawRect(i*c, j*c, c, c);
 		    } 
 		}
+	}
+
+
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
