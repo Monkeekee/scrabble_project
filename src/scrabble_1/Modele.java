@@ -21,7 +21,7 @@ public class Modele extends Observable{
 	}
 	
 	public int NbJ;
-	public ArrayList<Partie> parties;
+	public Partie partiePrec;
 	File fichier = new File("parties.xml");
 	
 	public Dictionnaire dico;
@@ -49,27 +49,26 @@ public class Modele extends Observable{
 	
 	public Modele() {
 		
+		this.partiePrec=new Partie();
 		
 		//String[] dicos = {"./dico_a-g.txt","./dico_h-z.txt"};
 		//this.dico = new Dictionnaire(dicos);
 		//this.PlateauLettre = new cell[15][15];
 		
-		XMLDecoder decoder = null;
+		XMLDecoder decoder = null; //partie décode partie.xml
 		if (this.fichier.exists()) {		
 			try {
 				FileInputStream fis = new FileInputStream(fichier);
 				BufferedInputStream bis = new BufferedInputStream(fis);
 				decoder = new XMLDecoder(bis);
 				
-				this.parties = (ArrayList<Partie>) decoder.readObject();
+				this.partiePrec = (Partie) decoder.readObject();
 				
 				}catch (Exception e) {
 					throw new RuntimeException("Chargement des donn�es impossible");
 				}finally {
 					if (decoder != null) decoder.close();
 			}
-		}else {
-			this.parties = new ArrayList<Partie>();
 		}
 	}
 	
@@ -81,7 +80,7 @@ public class Modele extends Observable{
 	
 	public void enregistrer() {
 		
-		this.parties.add(this.partieEC);
+		this.partiePrec=this.partieEC;
 		
 		XMLEncoder encoder = null;
 		try {
@@ -89,7 +88,7 @@ public class Modele extends Observable{
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
 			encoder = new XMLEncoder(bos);
 			
-			encoder.writeObject(this.parties);
+			encoder.writeObject(this.partiePrec);
 			encoder.flush();
 		}catch (final java.io.IOException e) {
 			throw new RuntimeException("Ecriture des donn�es impossible");
@@ -99,17 +98,10 @@ public class Modele extends Observable{
 		System.out.println("partie sauvegardée");
 	}
 
-	public ArrayList<Partie> getParties() {
-		return parties;
-	}
-	
-	
-	
-	
 	
 
-	public void setParties(ArrayList<Partie> parties) {
-		this.parties = parties;
+	public void jouerPPrec() {
+		this.partieEC = this.partiePrec;
 	}
 	
 	public void newPartie(int NbJ) {

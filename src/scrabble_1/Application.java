@@ -19,7 +19,7 @@ public class Application {
 		Modele m = new Modele(); 
 		
 		//si on a deja une partie sauvegardée on la lance si sélectionné
-		if (m.parties.size() != 0) {
+		if (!m.partiePrec.equals(new Partie())) {
 			String Pte = (String) JOptionPane.showInputDialog(null, 
 		  	      "Choisissez une partie a lancer :",
 		  	      "Scrabble",
@@ -28,8 +28,7 @@ public class Application {
 		  	      new String[] {"Nouvelle","Précédente"}, "Précédente");
 			
 			if (Pte == "Précédente") {
-				m.partieEC=m.parties.get(0);
-				m.parties.remove(0);
+				m.jouerPPrec();
 			}
 			else {
 				Integer NbJ = (Integer) JOptionPane.showInputDialog(null, 
@@ -67,7 +66,8 @@ public class Application {
 		m.addObserver(v);
 		
 		v.setVisible(true);
-		
+		v.addKeyListener(c);
+		v.addWindowListener(c);
 		
 		//m.newPartie(2);
 		

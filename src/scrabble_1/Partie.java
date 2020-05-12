@@ -37,7 +37,9 @@ public class Partie implements Serializable {
 	
 	
 	
-	
+	public Partie() {
+		this.NbrJoueur = 0;
+	}
 	
 	
 	public Partie(int NbrJ) {
