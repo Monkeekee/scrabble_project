@@ -39,14 +39,16 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 			
 			
 			this.modl.partieEC.plateau.get(Math.floorDiv(x, cs)).get(Math.floorDiv(y, cs)).selec = true;
-			System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, cs)).get(Math.floorDiv(y, cs)).selec);
-			System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, cs)).get(Math.floorDiv(y, cs)).letter);
+			this.modl.changeEtat();
+			//System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, cs)).get(Math.floorDiv(y, cs)).selec);
+			//System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, cs)).get(Math.floorDiv(y, cs)).letter);
 		}
 		if (e.getClickCount() == 2) {
 			int x = e.getX();
 			int y = e.getY();
 			this.modl.partieEC.plateau.get(Math.floorDiv(x, cs)).get(Math.floorDiv(y, cs)).selec = false;
-			System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, cs)).get(Math.floorDiv(y, cs)).selec);
+			this.modl.changeEtat();
+			//System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, cs)).get(Math.floorDiv(y, cs)).selec);
 		}
 		
 	}

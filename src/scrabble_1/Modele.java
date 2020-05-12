@@ -138,9 +138,9 @@ public class Modele extends Observable{
 		this.notifyObservers();
 	}
 	
-	public void changeEtat(Integer e) { //pour communiquer avec la vue de tout changement du modele
+	public void changeEtat() { //pour communiquer avec la vue de tout changement du modele
 		this.setChanged();
-		this.notifyObservers(e);
+		this.notifyObservers();
 	}
 	
 }
