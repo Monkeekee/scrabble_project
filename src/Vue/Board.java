@@ -41,7 +41,6 @@ public class Board extends JPanel implements Observer{
 		this.modl = modl;
 		this.ctrl = C;
 		this.setVisible(true);
-		this.repaint();
 		this.addMouseListener(ctrl);
 	}
 	

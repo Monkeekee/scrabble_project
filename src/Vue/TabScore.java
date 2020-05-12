@@ -37,13 +37,13 @@ public class TabScore extends JPanel implements Observer{
 		//this.setBackground(Color.ORANGE);
 		this.modl=m;
 		this.ctrl=C;
-		this.repaint();
+		
 		
 
 	}
 	
 	public void drawTabScore(Graphics g) {
-		Dimension d = this.getSize();
+		
 		int dw = Interface.iWidth;
 		int dh = Interface.iHeight;
 		int n = this.modl.NbJ;

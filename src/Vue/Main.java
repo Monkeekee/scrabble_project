@@ -31,7 +31,7 @@ public class Main extends JPanel implements Observer{
 		this.setPreferredSize(new Dimension(Interface.iWidth,Interface.iHeight/3)); //pif
 		this.modl=m;
 		this.ctrl=C;
-		this.repaint();
+		
 	}
 	
 	public void drawMain(Graphics g) {
