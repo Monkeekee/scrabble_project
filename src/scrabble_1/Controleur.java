@@ -89,21 +89,25 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 				this.modl.partieEC.SupprimerMot();
 			}
 			this.modl.changeTour();
+			this.modl.partieEC.deselec();
 			System.out.print("Valider");
 		}
 		if(btn.getName()=="Passer") {
+			this.modl.partieEC.deselec();
 			this.modl.changeTour();
 			//System.out.print("Passer");
 		}
 		if(btn.getName()=="Changer") {
 			for (int i=0; i<=6;i++) {
 				this.modl.partieEC.changerLettre(i);
+				this.modl.partieEC.deselec();
 				this.modl.changeTour();
 			}
 			//System.out.print("Changer");
 			
 		}
 		if(btn.getName()=="Annuler") {
+			this.modl.partieEC.deselec();
 			this.modl.partieEC.SupprimerMot();
 			//System.out.print("annuler");
 		}
