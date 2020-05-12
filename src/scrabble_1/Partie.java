@@ -10,6 +10,8 @@ public class Partie implements Serializable {
 	
 	private static final long serialVersionUID = 123L;
 	
+	
+	
 	public int NbrJoueur;
 	public int[] TableauScore;
 	public Player J_actif;
@@ -31,7 +33,7 @@ public class Partie implements Serializable {
 	public ArrayList<ArrayList<cell>> plateau = new ArrayList<>();
 	public ArrayList<Character> sacDePioche; //necessaire pour avoir une pioche vraiment aleatoire
 
-
+	
 	
 	public ArrayList<String> MotJoues = new ArrayList<String>();
 	
@@ -48,7 +50,8 @@ public class Partie implements Serializable {
 		this.Sac = new HashMap<Character,Integer>();
 		this.PtsLettre = new HashMap<Character,Integer>();
 		this.sacDePioche = new ArrayList<Character>();
-	
+		
+		
 		for (int i=0; i<= 26; i++) {
 			this.Sac.put(lettres[i], quantite[i]);
 			this.PtsLettre.put(lettres[i], points[i]);
