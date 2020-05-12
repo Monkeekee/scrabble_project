@@ -68,8 +68,9 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		JButton btn = (JButton) e.getSource();
-		if(btn.getName()== "Valider" ) {
+		JButton btn = (JButton)e.getSource();
+		System.out.print(btn.getName());
+		if(btn.getName() == "Valider" ) {
 			int x1 = this.modl.partieEC.CooMotJoue()[0];
 			int y1 = this.modl.partieEC.CooMotJoue()[1];
 			int x2 = this.modl.partieEC.CooMotJoue()[2];
@@ -81,19 +82,23 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 				this.modl.partieEC.SupprimerMot();
 			}
 			this.modl.changeTour();
+			System.out.print("Valider");
 		}
 		if(btn.getName()=="Passer") {
 			this.modl.changeTour();
+			System.out.print("Passer");
 		}
 		if(btn.getName()=="Changer") {
 			for (int i=0; i<=6;i++) {
 				this.modl.partieEC.changerLettre(i);
 			}
+			System.out.print("Changer");
 			
 		}
 		if(btn.getName()=="Annuler") {
 			this.modl.partieEC.SupprimerMot();
 		}
+		System.out.print("annuler");
 	}
 	
 	
