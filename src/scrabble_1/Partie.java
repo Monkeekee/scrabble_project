@@ -128,7 +128,7 @@ public class Partie implements Serializable {
 		int ja_num = this.J_actif.num_j;
 		this.Jrs[ja_num]=this.J_actif;
 		this.J_actif = this.Jrs[(ja_num+1)%this.NbrJoueur];
-		this.deselec();
+		
 	}
 	
 	public void PlacerLettre(char lettre,int x, int y) {
