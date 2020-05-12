@@ -122,9 +122,11 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 		// TODO Auto-generated method stub
 		
 		char Caract = evt.getKeyChar();
-		int x = this.modl.partieEC.TrouverCaseSelec()[0];
-		int y = this.modl.partieEC.TrouverCaseSelec()[1];
-		this.modl.PlacerLettre(Caract,x ,y );
+		int[] coor = this.modl.partieEC.TrouverCaseSelec();
+		if (!coor.equals(null)) {
+			this.modl.PlacerLettre(Caract,coor[1] ,coor[2] );
+		}
+		
 		System.out.print(Caract);
 		
 
