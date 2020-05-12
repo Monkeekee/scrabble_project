@@ -128,6 +128,7 @@ public class Partie implements Serializable {
 		int ja_num = this.J_actif.num_j;
 		this.Jrs[ja_num]=this.J_actif;
 		this.J_actif = this.Jrs[(ja_num+1)%this.NbrJoueur];
+		this.deselec();
 	}
 	
 	public void PlacerLettre(char lettre,int x, int y) {
@@ -184,6 +185,7 @@ public class Partie implements Serializable {
 				this.J_actif.score += this.ptsMot(this.Touchemot(i, y1, dir)[0], this.Touchemot(i, y1, dir)[2], this.Touchemot(i, y1, dir)[1], this.Touchemot(i, y1, dir)[3]);
 			}
 		}
+
 	}
 	
 	public int ptsMot(int x1,int y1, int x2,int y2) {
@@ -287,6 +289,7 @@ public class Partie implements Serializable {
 					}
 			}
 		}
+		this.deselec();
 	}
 	
 	public int[] TrouverCaseSelec() {
@@ -305,6 +308,23 @@ public class Partie implements Serializable {
 		int [] coo = {x,y};
 		return coo;
 	}
+	
+	public void deselec() {
+		for (int i = 0; i < 15; i++) {
+			
+			for (int j = 0;j < 15; j++) {
+				this.plateau.get(i).get(j).selec=false;
+			}
+		}
+	}
+	
+	
+	public void selectionner(int x, int y) {
+		this.deselec();
+		this.plateau.get(x).get(y).selec=true;
+		
+	}
+	
 	
 	public int[] CooMotJoue() {
 		int x1 = 0;
