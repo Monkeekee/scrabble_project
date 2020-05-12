@@ -33,13 +33,14 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 			int x = e.getX();
 			int y = e.getY();
 			this.modl.partieEC.plateau.get(Math.floorDiv(x, 45)).get(Math.floorDiv(y, 45)).selec = true;
-			//System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, 45)).get(Math.floorDiv(y, 45)).selec);
+			System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, 45)).get(Math.floorDiv(y, 45)).selec);
+			System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, 45)).get(Math.floorDiv(y, 45)).letter);
 		}
 		if (e.getClickCount() == 2) {
 			int x = e.getX();
 			int y = e.getY();
 			this.modl.partieEC.plateau.get(Math.floorDiv(x, 45)).get(Math.floorDiv(y, 45)).selec = false;
-			//System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, 45)).get(Math.floorDiv(y, 45)).selec);
+			System.out.print(this.modl.partieEC.plateau.get(Math.floorDiv(x, 45)).get(Math.floorDiv(y, 45)).selec);
 		}
 		
 	}
@@ -94,6 +95,7 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 		if(btn.getName()=="Changer") {
 			for (int i=0; i<=6;i++) {
 				this.modl.partieEC.changerLettre(i);
+				this.modl.changeTour();
 			}
 			//System.out.print("Changer");
 			
@@ -110,7 +112,11 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 	@Override
 	public void keyPressed(KeyEvent evt) {
 		// TODO Auto-generated method stub
-		
+		char Caract = evt.getKeyChar();
+		int x = this.modl.partieEC.TrouverCaseSelec()[0];
+		int y = this.modl.partieEC.TrouverCaseSelec()[1];
+		this.modl.PlacerLettre(Caract,x ,y );
+		System.out.print(Caract);
 		
 
 	}
@@ -128,10 +134,7 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 	@Override
 	public void keyTyped(KeyEvent evt) {
 		// TODO Auto-generated method stub
-		char Caract = evt.getKeyChar();
-		int x = this.modl.partieEC.TrouverCaseSelec()[0];
-		int y = this.modl.partieEC.TrouverCaseSelec()[1];
-		this.modl.PlacerLettre(Caract,x ,y );
+		
 	}
 
 
