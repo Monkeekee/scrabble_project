@@ -1,4 +1,4 @@
-package scrabble_1;
+package Vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,6 +7,9 @@ import java.awt.Graphics;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import scrabble_1.Controleur;
+import scrabble_1.Modele;
 
 public class TabScore extends JPanel{
 	

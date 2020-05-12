@@ -2,6 +2,8 @@ package scrabble_1;
 
 import javax.swing.JOptionPane;
 
+import Vue.Vue;
+
 public class Application {
 	
 	

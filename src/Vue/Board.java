@@ -1,4 +1,4 @@
-package scrabble_1;
+package Vue;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -10,6 +10,10 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import scrabble_1.Controleur;
+import scrabble_1.Modele;
+import scrabble_1.cell;
 
 public class Board extends JPanel{
 	

@@ -1,4 +1,4 @@
-package scrabble_1;
+package Vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,14 +21,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
+import scrabble_1.Controleur;
+import scrabble_1.Modele;
+
+
 
 
 public class Vue extends JFrame implements Observer{
 //completer avec GUI
 	
 	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static int screenWidth = screenSize.width-100;
-	public static int screenHeight = screenSize.height-100;
+	public static int screenWidth = screenSize.width-80;
+	public static int screenHeight = screenSize.height-80;
 	
 
 	public Modele modl;
@@ -47,11 +51,13 @@ public class Vue extends JFrame implements Observer{
 		this.modl = m;
 		
 		//fenetre
+		this.setLocationRelativeTo(null);
 		this.setTitle("SCRABBLE");
-		this.setMinimumSize(new Dimension(Vue.screenWidth, Vue.screenHeight));
-		this.setPreferredSize(new Dimension(Vue.screenWidth, Vue.screenHeight));
-		this.setVisible(true);
+		this.setMinimumSize(new Dimension(Vue.screenWidth+30, Vue.screenHeight+30));
+		this.setPreferredSize(new Dimension(Vue.screenWidth+30, Vue.screenHeight+30));
 		this.setResizable(true);
+		this.setVisible(true);
+		
 		
 		BorderLayout BL = new BorderLayout();
 		this.setLayout(BL);
@@ -75,13 +81,19 @@ public class Vue extends JFrame implements Observer{
 
         //this.setLayout(gridbag);
 
+		Main mn = new Main(m,c);
+		TabScore Tb = new TabScore(m,c);
+		RangeBtn Rb = new RangeBtn(m,c);
 
+		this.add(Rb,BorderLayout.CENTER);
+		this.add(mn,BorderLayout.SOUTH);
+		this.add(Tb,BorderLayout.NORTH);
 		this.board= new Board(m,c);
-		this.interf= new Interface(m,c);
+		//this.interf= new Interface(m,c);
 		
-		this.add(board,BorderLayout.CENTER);
+		this.add(board,BorderLayout.WEST);
 					
-		this.add(interf,BorderLayout.WEST);
+		//this.add(interf,BorderLayout.EAST);
 		
 		this.repaint();
 
