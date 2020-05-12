@@ -80,7 +80,7 @@ public class Modele extends Observable{
 	
 	public void enregistrer() {
 		
-		this.partiePrec=this.partieEC;
+		Partie SAVE = this.partieEC;
 		
 		XMLEncoder encoder = null;
 		try {
@@ -88,7 +88,7 @@ public class Modele extends Observable{
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
 			encoder = new XMLEncoder(bos);
 			
-			encoder.writeObject(this.partiePrec);
+			encoder.writeObject(SAVE);
 			encoder.flush();
 		}catch (final java.io.IOException e) {
 			throw new RuntimeException("Ecriture des donn�es impossible");
@@ -101,6 +101,8 @@ public class Modele extends Observable{
 	
 
 	public void jouerPPrec() {
+		this.chargeDico();
+		this.NbJ=this.partiePrec.NbrJoueur;
 		this.partieEC = this.partiePrec;
 	}
 	

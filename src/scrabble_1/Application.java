@@ -17,17 +17,18 @@ public class Application {
 	public static void main(String[] args) {
 
 		Modele m = new Modele(); 
+		String nomPPrec =m.partiePrec.toString();
 		
 		//si on a deja une partie sauvegardée on la lance si sélectionné
-		if (!m.partiePrec.equals(new Partie())) {
+		if (m.partiePrec.NbrJoueur != 0) {
 			String Pte = (String) JOptionPane.showInputDialog(null, 
 		  	      "Choisissez une partie a lancer :",
 		  	      "Scrabble",
 		  	      JOptionPane.QUESTION_MESSAGE,
 		  	      null,
-		  	      new String[] {"Nouvelle","Précédente"}, "Précédente");
+		  	      new String[] {"Nouvelle",nomPPrec}, nomPPrec);
 			
-			if (Pte == "Précédente") {
+			if (Pte == nomPPrec) {
 				m.jouerPPrec();
 			}
 			else {

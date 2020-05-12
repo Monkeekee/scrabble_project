@@ -81,16 +81,11 @@ public class Partie implements Serializable {
 	}
 	
 	public String toString() {
-		String res = Integer.toString(this.NbrJoueur) + " joueurs \n";
-		
-		for (ArrayList<cell> l : this.plateau) { //initialisation des cases du plateau
-			res = res +"\n";
-			
-			for (cell c : l) {
-				//res = res + Integer.toString(c.value);
-				res = res + c.toString();
-				//la value est déterminee par le Plateau de Modèle
-			}
+		String res = Integer.toString(this.NbrJoueur) + " joueurs, ";
+		if (!this.MotJoues.isEmpty()) {
+			res = res + this.MotJoues.get(0);
+		}else {
+			res = res + "aucun mot";
 		}
 		
 		return res;

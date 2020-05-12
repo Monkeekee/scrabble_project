@@ -1,7 +1,10 @@
 package scrabble_1;
 
+import java.io.Serializable;
 
-public class cell {
+public class cell implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	public char letter;
 	public int value;

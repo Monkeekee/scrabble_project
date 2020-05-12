@@ -1,8 +1,11 @@
 package scrabble_1;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Player {
+public class Player implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	public String name;
 	public int score;
