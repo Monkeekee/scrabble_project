@@ -295,9 +295,8 @@ public class Partie implements Serializable {
 	}
 	
 	public int[] TrouverCaseSelec() {
-		int x = 0;
-		int y = 0;
-		
+		int x=-1;
+		int y=-1;
 		for (int i = 0; i < 15; i++) {
 			
 			for (int j = 0;j < 15; j++) {
@@ -308,6 +307,9 @@ public class Partie implements Serializable {
 			}
 		}
 		int [] coo = {x,y};
+		if(x==-1 && y==-1) {
+			return null;
+		}
 		return coo;
 	}
 	
