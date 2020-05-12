@@ -25,7 +25,7 @@ public class Board extends JPanel implements Observer{
 	static int bWidth = Integer.min(Vue.screenHeight,Vue.screenWidth*2/3);;
 	static int bHeigth = Integer.min(Vue.screenHeight,Board.bWidth);
 	
-	private int cellsize = Board.bHeigth/15;
+	public static int cellsize = Board.bHeigth/15;
 	
 	public cell temp1,temp2 ;
 	private ArrayList<cell> mainC; //copie jaune en cell du joueur actif
