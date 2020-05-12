@@ -127,6 +127,11 @@ public class Modele extends Observable{
 		return this.partieEC.confirmerMot(x1, y1, x2, y2, this.dico);
 	}
 	
+	public void CheckMot(int x1, int y1, int x2, int y2) {
+		this.partieEC.checkmot(x1, y1, x2, y2);
+		this.setChanged();
+		this.notifyObservers();
+	}
 	public void PlacerLettre(char c,int x,int y) {
 		this.partieEC.PlacerLettre(c, x, y);
 		this.setChanged();

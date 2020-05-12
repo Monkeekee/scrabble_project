@@ -172,13 +172,21 @@ public class Partie implements Serializable {
 		String mot = this.motEntre(x1, y1, x2, y2);
 		if (d.existe(mot)) {
 				res=true;
-				for(int i=x1; x1 <= x2; i++) {
-					for(int j=y1; y1 <= y2; i++) {
-						this.plateau.get(i).get(j).checked=true;
-					}
-				}
 			}
 		return res;
+	}
+	
+	public void checkmot(int x1,int y1,int x2,int y2) {
+		if (x1 == x2) {
+			for (int i = y1 ; y1 <= y2 ; i++ ) {
+				this.plateau.get(x1).get(i).checked=true;
+			}
+		}
+		if (y2 == y1) {
+			for (int i = x1 ; x1 <= x2 ; i++ ) {
+				this.plateau.get(i).get(y1).checked=true;
+			}
+		}
 	}
 	
 	public void actuScore(int x1, int y1, int x2, int y2) {
