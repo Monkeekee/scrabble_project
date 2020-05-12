@@ -52,7 +52,23 @@ public class Board extends JPanel implements Observer{
 		}
 	
 	
+	public Color colorCase(cell cl, int i, int j) { 
+		if (cl.checked && cl.occupied) {             //posé validé
+    		return Color.YELLOW;
+    	}
+		
+		if (!cl.selec && cl.occupied && !cl.checked) { //posé en attente de validation mot
+    		return Color.ORANGE;
+    	}
 
+    	if (cl.selec && !cl.checked) { //selectionné non validé
+    		return Color.WHITE;
+    	}
+    	
+		
+		return Board.ColorCase[Modele.Plateau[i][j]+1];
+		
+	}
 	
 	public void pBoard(Graphics g){
 		for (int i = 0; i < 15; i++)
@@ -60,40 +76,24 @@ public class Board extends JPanel implements Observer{
 		    for (int j = 0; j < 15; j++)
 		    {
 		    	int c = this.cellsize;
-		    	g.setColor(Board.ColorCase[Modele.Plateau[i][j]+1]);
-		    	
 		    	
 		    	cell cellule=this.modl.partieEC.plateau.get(i).get(j);
+		    	Color clr = this.colorCase(cellule, i, j);
 		    	
-		    	
-		    	
-		    	if (!cellule.selec && cellule.occupied && !cellule.checked) {
-		    		g.setColor(Color.GRAY);
-		    	}
-		    	
-		    	if (cellule.selec && cellule.occupied && !cellule.checked) { //cas ou on veut remplacer une lettre
-		    		g.setColor(Color.LIGHT_GRAY);
-		    		g.setColor(Color.BLACK);
-		    		g.drawString("_", i*c+c/2, j*c + c/2);
-		    	}
-		    	
-		    	if (cellule.selec && !cellule.occupied) { //cas ou on veut selectionner une case vide
-		    		g.setColor(Color.BLACK);
-		    		g.drawString("_", i*c+c/2, j*c + c/2);
-		    		
-		    		g.setColor(Color.WHITE);
-
-		    	}
-		    	
-		    	if (cellule.checked && cellule.occupied) {
-		    		g.setColor(Color.YELLOW);
-		    	}
-
+		    	g.setColor(clr);
 		    	g.fillRect(i*c, j*c, c, c);
-		    	g.drawString(""+cellule.letter, i*c+c/2, j*c + c/2);
-		    	
 		    	g.setColor(Color.BLACK);
+		    	
+		    	if (cellule.selec && !cellule.checked) {
+		    		g.drawString("_", i*c+c/2, j*c + c/2);
+		    	}
+		    	g.drawString(""+cellule.letter, i*c+c/2, j*c + c/2);
 		    	g.drawRect(i*c, j*c, c, c);
+		    	
+		    	
+		    	
+	
+		    	
 		    	
 		    	
 		    } 
