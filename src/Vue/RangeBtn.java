@@ -42,18 +42,22 @@ public class RangeBtn extends JPanel implements Observer{
 		BEnd.setText("VALIDER MOT");
 		BEnd.addActionListener(ctrl);
 		BEnd.setName("Valider");
+		BEnd.setFocusable(false);
 		//BNext.setBounds(sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		BNext.setText("FIN DU TOUR");
 		BNext.addActionListener(ctrl);
 		BNext.setName("Passer");
+		BNext.setFocusable(false);
 		//BPioche.setBounds(2*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		BPioche.setText("CHANGER LETTRE.S");
 		BPioche.addActionListener(ctrl);
 		BPioche.setName("Changer");
+		BPioche.setFocusable(false);
 		//Bsupp.setBounds(3*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		Bsupp.setText("ANNULER");
 		Bsupp.addActionListener(ctrl);
 		Bsupp.setName("Annuler");
+		Bsupp.setFocusable(false);
 		
 		this.add(BEnd);
 		this.add(BNext);

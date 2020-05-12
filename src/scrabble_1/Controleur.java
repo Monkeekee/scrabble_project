@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
+import java.util.Scanner;
 import javax.swing.JButton;
 
 import Vue.Board;
@@ -33,6 +33,7 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 		// TODO Auto-generated method stub
 		int cs = Board.cellsize;
 		if (e.getClickCount() == 1) {
+			//this.keyTyped(null);
 			int x = e.getX();
 			int y = e.getY();
 			this.modl.partieEC.selectionner(Math.floorDiv(x, cs),Math.floorDiv(y, cs));
@@ -144,8 +145,8 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 		if (!coor.equals(null)) {
 			this.modl.PlacerLettre(Caract,coor[1] ,coor[2] );
 		}
-		
-		System.out.print(Caract);
+		System.out.print(true);
+	
 	}
 
 
