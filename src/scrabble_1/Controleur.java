@@ -77,23 +77,26 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		JButton btn = (JButton)e.getSource();
-		System.out.print(btn.getName());
+		//System.out.print(btn.getName());
 		if(btn.getName() == "Valider" ) {
 			int x1 = this.modl.partieEC.CooMotJoue()[0];
 			int y1 = this.modl.partieEC.CooMotJoue()[1];
 			int x2 = this.modl.partieEC.CooMotJoue()[2];
 			int y2 = this.modl.partieEC.CooMotJoue()[3];
 			if (this.modl.confirmerMot(x1, y1, x2, y2)) {
+				System.out.print('a');
 				this.modl.ActuTabScore(x1, y1, x2, y2);
 				this.modl.partieEC.checkmot(x1, y1, x2, y2);
 			}
 			else {
-				this.modl.partieEC.SupprimerMot();
+				System.out.print('b');
+				this.modl.SupprimerMot();
 			}
+			
 			this.modl.partieEC.mainRdm();
 			this.modl.changeTour();
 			this.modl.partieEC.deselec();
-			System.out.print("Valider");
+			//System.out.print("Valider");
 		}
 		if(btn.getName()=="Passer") {
 			this.modl.partieEC.deselec();
@@ -146,7 +149,7 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 		if (!coor.equals(null)) {
 			this.modl.PlacerLettre(Caract,coor[0] ,coor[1] );
 		}
-		System.out.print(true);
+		//System.out.print(true);
 	
 	}
 
