@@ -84,7 +84,7 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 			int x2 = this.modl.partieEC.CooMotJoue()[2];
 			int y2 = this.modl.partieEC.CooMotJoue()[3];
 			if (this.modl.confirmerMot(x1, y1, x2, y2)) {
-				this.modl.partieEC.actuScore(x1, y1, x2, y2);
+				this.modl.ActuTabScore(x1, y1, x2, y2);
 				this.modl.partieEC.checkmot(x1, y1, x2, y2);
 			}
 			else {
