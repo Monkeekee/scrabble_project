@@ -139,7 +139,7 @@ public class Partie implements Serializable {
 			this.plateau.get(x).get(y).y=y ;
 			this.plateau.get(x).get(y).letter=lettre;
 			this.plateau.get(x).get(y).occupied=true;
-			this.J_actif.main.remove(lettre);
+			this.J_actif.main.remove((Character)lettre);
 		}
 	}
 	

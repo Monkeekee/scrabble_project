@@ -143,7 +143,7 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 		char Caract = evt.getKeyChar();
 		int[] coor = this.modl.partieEC.TrouverCaseSelec();
 		if (!coor.equals(null)) {
-			this.modl.PlacerLettre(Caract,coor[1] ,coor[2] );
+			this.modl.PlacerLettre(Caract,coor[0] ,coor[1] );
 		}
 		System.out.print(true);
 	
