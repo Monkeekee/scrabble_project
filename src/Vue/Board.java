@@ -64,7 +64,28 @@ public class Board extends JPanel implements Observer{
 		    	
 		    	
 		    	cell cellule=this.modl.partieEC.plateau.get(i).get(j);
-		    	if (cellule.checked) {
+		    	
+		    	
+		    	
+		    	if (!cellule.selec && cellule.occupied && !cellule.checked) {
+		    		g.setColor(Color.GRAY);
+		    	}
+		    	
+		    	if (cellule.selec && cellule.occupied && !cellule.checked) { //cas ou on veut remplacer une lettre
+		    		g.setColor(Color.LIGHT_GRAY);
+		    		g.setColor(Color.BLACK);
+		    		g.drawString("_", i*c+c/2, j*c + c/2);
+		    	}
+		    	
+		    	if (cellule.selec && !cellule.occupied) { //cas ou on veut selectionner une case vide
+		    		g.setColor(Color.BLACK);
+		    		g.drawString("_", i*c+c/2, j*c + c/2);
+		    		
+		    		g.setColor(Color.WHITE);
+
+		    	}
+		    	
+		    	if (cellule.checked && cellule.occupied) {
 		    		g.setColor(Color.YELLOW);
 		    	}
 
@@ -73,6 +94,8 @@ public class Board extends JPanel implements Observer{
 		    	
 		    	g.setColor(Color.BLACK);
 		    	g.drawRect(i*c, j*c, c, c);
+		    	
+		    	
 		    } 
 		}
 	}
@@ -82,7 +105,7 @@ public class Board extends JPanel implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+		repaint();
 	}
 	
 
