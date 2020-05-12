@@ -47,12 +47,10 @@ private static final long serialVersionUID = 1L;
 		this.ctrl =c;
 		this.modl =m;
 		this.setLayout(new BorderLayout());
-		this.setVisible(true);
+		
 		
 		this.main = new Main(m,c);
 		this.Tb = new TabScore(m,c);
-		
-		this.main.setVisible(true);
 		
 		int sizebutonW =Interface.iWidth/5;
 		int sizebutonH=Interface.iHeight/5;
@@ -64,22 +62,24 @@ private static final long serialVersionUID = 1L;
 	    JButton Bsupp = new JButton("Annuler");
 	    
 	   
-		BEnd.setBounds(0,Interface.iHeight/2 ,sizebutonW,sizebutonH);
+		//BEnd.setBounds(0,Interface.iHeight/2 ,sizebutonW,sizebutonH);
 		BEnd.setText("VALIDER MOT");
-		BNext.setBounds(sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
+		//BNext.setBounds(sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		BNext.setText("FIN DU TOUR");
-		BPioche.setBounds(2*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
+		//BPioche.setBounds(2*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		BPioche.setText("CHANGER LETTRE.S");
-		Bsupp.setBounds(3*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
+		//Bsupp.setBounds(3*sizebutonW,Interface.iHeight/2,sizebutonW,sizebutonH);
 		Bsupp.setText("ANNULER");
 		
-		this.add(BEnd);
-		this.add(BNext);
-		this.add(BPioche);
-		this.add(Bsupp);
+		this.add(BEnd,BorderLayout.CENTER);
+		this.add(BNext,BorderLayout.EAST);
+		this.add(BPioche,BorderLayout.EAST);
+		this.add(Bsupp,BorderLayout.EAST);
 		
 		this.add(main,BorderLayout.SOUTH);
 		this.add(Tb,BorderLayout.NORTH);
+		
+		this.setVisible(true);
 		
 		this.repaint();
 	}

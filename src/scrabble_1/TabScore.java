@@ -27,6 +27,7 @@ public class TabScore extends JPanel{
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
+		this.setSize(Interface.iWidth,Interface.iHeight*2/3);
 		this.setPreferredSize(new Dimension(300,300));
 		this.setBackground(Color.ORANGE);
 		this.modl=m;
