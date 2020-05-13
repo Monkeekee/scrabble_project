@@ -210,7 +210,7 @@ public class Partie implements Serializable {
 	public void actuScore(int x1, int y1, int x2, int y2) {
 		this.J_actif.score = this.J_actif.score + this.ptsMot(x1, y1, x2, y2);
 		//System.out.println(this.motEntre(x1, y1, x2, y2));
-		//System.out.println(this.ptsMot(x1, y1, x2, y2));
+		System.out.println(this.ptsMot(x1, y1, x2, y2));
 		
 		if (x1==x2) {
 			
@@ -218,10 +218,13 @@ public class Partie implements Serializable {
 				this.J_actif.score += 50;
 			}
 			for (int j=0; j<=y2 - y1; j++) {
-				if (this.isMotToucherV(x1, j+y1)) {
-					this.J_actif.score += this.ptsMot(this.MotToucherH(x1, j+y1)[0],this.MotToucherH(x1, j+y1)[1],this.MotToucherH(x1, j+y1)[2],this.MotToucherH(x1, j+y1)[3]);
-					
+				if (this.plateau.get(x1).get(j+y1).checked==false) {
+					if (this.isMotToucherV(x1, j+y1)) {
+						this.J_actif.score += this.ptsMot(this.MotToucherH(x1, j+y1)[0],this.MotToucherH(x1, j+y1)[1],this.MotToucherH(x1, j+y1)[2],this.MotToucherH(x1, j+y1)[3]);
+						
+					}
 				}
+				
 				
 			}
 		}
@@ -231,9 +234,12 @@ public class Partie implements Serializable {
 				this.J_actif.score += 50;
 			}
 			for (int i = 0 ; i <= x2-x1 ; i++ ) {
-				if (this.isMotToucherH(i+x1, y1)) {
-					this.J_actif.score += this.ptsMot(this.MotToucherV(i+x1,y1)[0],this.MotToucherV(i+x1,y1)[1],this.MotToucherV(i+x1,y1)[2],this.MotToucherV(i+x1,y1)[3]);
+				if (this.plateau.get(i+x1).get(y1).checked==false) {
+					if (this.isMotToucherH(i+x1, y1)) {
+						this.J_actif.score += this.ptsMot(this.MotToucherV(i+x1,y1)[0],this.MotToucherV(i+x1,y1)[1],this.MotToucherV(i+x1,y1)[2],this.MotToucherV(i+x1,y1)[3]);
+					}
 				}
+				
 				
 			}
 		}
@@ -241,12 +247,12 @@ public class Partie implements Serializable {
 	}
 	
 	public int ptsMot(int x1,int y1, int x2,int y2) {
-		if(x1==-1) {
-			return 0;
-		}
+
 		int points = 0;
 		int multiplicateur = 1;
+		
 		if (x1 == x2) {
+			//System.out.println("Vertical");
 			for (int j=0; j<=y2 - y1; j++) {
 				if(this.plateau.get(x1).get(j+y1).checked==false) {
 					if(Modele.Plateau[x1][j+y1]==1) {
@@ -262,22 +268,24 @@ public class Partie implements Serializable {
 						multiplicateur = 3;
 					}
 				}else {
-					if(Modele.Plateau[x1][j+y1]==0) {
+					
 						points += this.PtsLettre.get(this.plateau.get(x1).get(j+y1).letter);
-					}
+					
 					
 				}
 			
 			}
 		}
 		if (y1 == y2) {
+			//System.out.println("Horizontal");
 			for (int i=0; i<=x2 - x1; i++) {
 				if(this.plateau.get(i+x1).get(y1).checked==false) {
+					//System.out.println("Checked=false");
 					if(Modele.Plateau[i+x1][y1]==1) {
-						points += this.PtsLettre.get(this.plateau.get(i).get(y1).letter)*2;
+						points += this.PtsLettre.get(this.plateau.get(i+x1).get(y1).letter)*2;
 					}
 					if(Modele.Plateau[i+x1][y1]==3) {
-						points += this.PtsLettre.get(this.plateau.get(i).get(y1).letter)*3;
+						points += this.PtsLettre.get(this.plateau.get(i+x1).get(y1).letter)*3;
 					}
 					if(Modele.Plateau[i+x1][y1]==2) {
 						multiplicateur = 2;
@@ -286,9 +294,9 @@ public class Partie implements Serializable {
 						multiplicateur = 3;
 					}
 				}else {
-					if(Modele.Plateau[i+x1][y1]==0) {
-						points += this.PtsLettre.get(this.plateau.get(i).get(y1).letter);
-					}
+					
+						points += this.PtsLettre.get(this.plateau.get(i+x1).get(y1).letter);
+					
 					
 				}
 			
