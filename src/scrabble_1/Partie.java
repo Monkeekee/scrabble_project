@@ -402,6 +402,31 @@ public class Partie implements Serializable {
 		int[] coo = {x1,y1,x2,y2};
 		return coo;
 	}
+	
+	public int[] detectionMot() {
+		int x1 = this.CooMotJoue()[0];
+		int y1 = this.CooMotJoue()[1];
+		int x2 = this.CooMotJoue()[2];
+		int y2 = this.CooMotJoue()[3];
+		if(x1==x2) {
+			while (this.plateau.get(x1).get(y1-1).occupied && y1 >= 0) {
+				y1 = y1 - 1;
+			}
+			while (this.plateau.get(x1).get(y2+1).occupied && y2 <= 14) {
+				y2 = y2 + 1;
+			}
+		}
+		if(y1==y2) {
+			while (this.plateau.get(x1-1).get(y1).occupied && x1 >= 0) {
+				x1 = x1 - 1;
+			}
+			while(this.plateau.get(x2+1).get(y1).occupied && x2 <= 14) {
+				x2 = x2 + 1;
+			}
+		}
+		int [] coo = {x1,y1,x2,y2};
+		return coo;
+	}
 }
 
 

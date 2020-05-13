@@ -79,24 +79,27 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 		JButton btn = (JButton)e.getSource();
 		//System.out.print(btn.getName());
 		if(btn.getName() == "Valider" ) {
-			int[] coord = this.modl.partieEC.CooMotJoue();
+			int[] coord = this.modl.partieEC.detectionMot();
 			int x1 = coord[0];
 			int y1 = coord[1];
 			int x2 = coord[2];
 			int y2 = coord[3];
-			System.out.println(x1);
-			System.out.println(y1);
-			System.out.println(x2);
-			System.out.println(y2);
-			
-			System.out.println(this.modl.partieEC.motEntre(x1, y1, x2, y2));
+			//System.out.println(x1);
+			//System.out.println(y1);
+			//System.out.println(x2);
+			//System.out.println(y2);
+			//System.out.println(this.modl.partieEC.detectionMot()[0]);
+			//System.out.println(this.modl.partieEC.detectionMot()[1]);
+			//System.out.println(this.modl.partieEC.detectionMot()[2]);
+			//System.out.println(this.modl.partieEC.detectionMot()[3]);
+			//System.out.println(this.modl.partieEC.motEntre(x1, y1, x2, y2));
 			if (this.modl.confirmerMot(x1, y1, x2, y2)) {
-				System.out.print("MOT OK");
+				System.out.println("MOT OK");
 				this.modl.ActuTabScore(x1, y1, x2, y2);
 				this.modl.partieEC.checkmot(x1, y1, x2, y2);
 			}
 			else {
-				System.out.print("MOT NAZE");
+				System.out.println("MOT NAZE");
 				this.modl.SupprimerMot();
 			}
 			
