@@ -427,6 +427,64 @@ public class Partie implements Serializable {
 		int [] coo = {x1,y1,x2,y2};
 		return coo;
 	}
+	
+	public int[] MotToucherV(int x,int y) {
+		int y1=y;
+		int y2=y;
+		while (this.plateau.get(x).get(y1-1).occupied && y1 >= 0) {
+			y1 = y1 - 1;
+		}
+		while (this.plateau.get(x).get(y2+1).occupied && y2 <= 14) {
+			y2 = y2 + 1;
+		}
+		int [] coo = {x,y1,x,y2};
+		return coo;
+	}
+	
+	public int[] MotToucherH(int x,int y) {
+		int x1=x;
+		int x2=x;
+		while (this.plateau.get(x1-1).get(y).occupied && x1 >= 0) {
+			x1 = x1 - 1;
+		}
+		while (this.plateau.get(x2+1).get(y).occupied && x2 <= 14) {
+			x2 = x2 + 1;
+		}
+		int [] coo = {x1,y,x2,y};
+		return coo;
+	}
+	
+	public  boolean isMotToucherV(int x,int y) {
+		int y1=y;
+		int y2=y;
+		while (this.plateau.get(x).get(y1-1).occupied && y1 >= 0) {
+			y1 = y1 - 1;
+		}
+		while (this.plateau.get(x).get(y2+1).occupied && y2 <= 14) {
+			y2 = y2 + 1;
+		}
+		if (y1==y2) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean isMotToucherH(int x,int y) {
+		int x1=x;
+		int x2=x;
+		while (this.plateau.get(x1-1).get(y).occupied && x1 >= 0) {
+			x1 = x1 - 1;
+		}
+		while (this.plateau.get(x2+1).get(y).occupied && x2 <= 14) {
+			x2 = x2 + 1;
+		}
+		if (x1==x2) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }
 
 
