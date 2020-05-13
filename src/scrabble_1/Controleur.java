@@ -79,11 +79,17 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 		JButton btn = (JButton)e.getSource();
 		//System.out.print(btn.getName());
 		if(btn.getName() == "Valider" ) {
-			int x1 = this.modl.partieEC.CooMotJoue()[0];
-			int y1 = this.modl.partieEC.CooMotJoue()[1];
-			int x2 = this.modl.partieEC.CooMotJoue()[2];
-			int y2 = this.modl.partieEC.CooMotJoue()[3];
-			System.out.print('e');
+			int[] coord = this.modl.partieEC.CooMotJoue();
+			int x1 = coord[0];
+			int y1 = coord[1];
+			int x2 = coord[2];
+			int y2 = coord[3];
+			System.out.println(x1);
+			System.out.println(y1);
+			System.out.println(x2);
+			System.out.println(y2);
+			
+			System.out.println(this.modl.partieEC.motEntre(x1, y1, x2, y2));
 			if (this.modl.confirmerMot(x1, y1, x2, y2)) {
 				System.out.print('a');
 				this.modl.ActuTabScore(x1, y1, x2, y2);

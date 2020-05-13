@@ -151,16 +151,36 @@ public class Partie implements Serializable {
 	
 	public String motEntre(int x1, int y1, int x2, int y2) {
 		String mot = "";
-		if (x1 == x2) {
-			for (int i = y1 ; y1 <= y2 ; i++ ) {
-				mot = mot + this.plateau.get(x1).get(i).letter;
+		
+		if (x1 == x2) { //sur la meme ligne
+			System.out.println("ligne");
+			for (int j=0; j<y2 - y1; j++) {
+				mot = mot + this.plateau.get(x1).get(y1+j);
+				System.out.println(this.plateau.get(x1).get(y1+j));
+				
+				
+				
 			}
 		}
-		if (y2 == y1) {
-			for (int i = x1 ; x1 <= x2 ; i++ ) {
-				mot = mot + this.plateau.get(i).get(y1).letter;
+		if (y1 == y2) { // sur la meme colone
+			System.out.println("colonne");
+			for (int i=0; i<x2 - x1; i++) {
+				mot = mot + this.plateau.get(x1+i).get(y1);
+				System.out.println(this.plateau.get(x1+i).get(y1));
 			}
 		}
+	
+		
+		//if (x1 == x2) {
+		//	for (int i = y1 ; y1 <= y2 ; i++ ) {
+		//		mot = mot + this.plateau.get(x1).get(i).letter;
+		//	}
+		//}
+		//if (y2 == y1) {
+		//	for (int i = x1 ; x1 <= x2 ; i++ ) {
+		//		mot = mot + this.plateau.get(i).get(y1).letter;
+		//	}
+		//}
 		return mot;
 		
 	}
@@ -352,8 +372,8 @@ public class Partie implements Serializable {
 	
 	
 	public int[] CooMotJoue() {
-		int x1 = 0;
-		int y1 = 0;
+		int x1 = 14;
+		int y1 = 14;
 		int x2 = 0;
 		int y2 = 0;
 		for (int i = 0; i < 15; i++) {
