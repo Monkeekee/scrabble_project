@@ -434,7 +434,7 @@ public class Partie implements Serializable {
 		return coo;
 	}
 	
-	public int[] MotToucherV(int x,int y) {
+	public int[] MotToucherH(int x,int y) {
 		int y1=y;
 		int y2=y;
 		while (this.plateau.get(x).get(y1-1).occupied && y1 >= 0) {
@@ -447,7 +447,7 @@ public class Partie implements Serializable {
 		return coo;
 	}
 	
-	public int[] MotToucherH(int x,int y) {
+	public int[] MotToucherV(int x,int y) {
 		int x1=x;
 		int x2=x;
 		while (this.plateau.get(x1-1).get(y).occupied && x1 >= 0) {
@@ -460,7 +460,7 @@ public class Partie implements Serializable {
 		return coo;
 	}
 	
-	public  boolean isMotToucherV(int x,int y) {
+	public  boolean isMotToucherH(int x,int y) {
 		int y1=y;
 		int y2=y;
 		while (this.plateau.get(x).get(y1-1).occupied && y1 >= 0) {
@@ -476,7 +476,7 @@ public class Partie implements Serializable {
 		}
 	}
 	
-	public boolean isMotToucherH(int x,int y) {
+	public boolean isMotToucherV(int x,int y) {
 		int x1=x;
 		int x2=x;
 		while (this.plateau.get(x1-1).get(y).occupied && x1 >= 0) {
@@ -500,10 +500,13 @@ public class Partie implements Serializable {
 		int y2 = coo[3];
 		boolean res = false;
 		if (this.confirmerMot(x1, y1, x2, y2, d)) {
+			
 			if(x1==x2) {
+				System.out.println("vertical");
 				for (int i=0; i <= y2-y1; i++) {
-					if (this.isMotToucherV(x1, i+y1)) {
-						int[] coord = this.MotToucherV(x1, i+y1);
+					
+					if (this.isMotToucherH(x1, i+y1)) {
+						int[] coord = this.MotToucherH(x1, i+y1);
 						int X1 = coord[0];
 						int Y1 = coord[1];
 						int X2 = coord[2];
@@ -513,13 +516,16 @@ public class Partie implements Serializable {
 						}else {
 							return false;
 						}
+					}else {
+						res = true;
 					}
 				}
 			}
 			if(y1==y2) {
+				System.out.println("horizontal");
 				for (int j=0; j <= x2-x1; j++) {
-					if (this.isMotToucherH(j+x1, y1)) {
-						int[] coord = this.MotToucherH(j+x1, y1);
+					if (this.isMotToucherV(j+x1, y1)) {
+						int[] coord = this.MotToucherV(j+x1, y1);
 						int X1 = coord[0];
 						int Y1 = coord[1];
 						int X2 = coord[2];
@@ -529,6 +535,8 @@ public class Partie implements Serializable {
 						}else {
 							return false;
 						}
+					}else {
+						res = true;
 					}
 				}
 			}
