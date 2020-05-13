@@ -3,6 +3,7 @@ package Vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
@@ -46,9 +47,11 @@ public class TabScore extends JPanel implements Observer{
 		
 		int dw = Interface.iWidth;
 		int dh = Interface.iHeight;
-		int n = this.modl.NbJ;
+		int n = this.modl.partieEC.NbrJoueur;
 		
 		for (int i = 0 ; i<this.modl.NbJ ; i++ ) {
+			 Font font = new Font("Verdana", Font.BOLD, 30); 
+			 g.setFont(font);
 			 g.setColor(Interface.CouleurJoueur[i]);
 			 g.fillRect(i*dw/n, 0, dw/n, dh/5);
 			 g.setColor(Color.BLACK);

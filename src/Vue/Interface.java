@@ -26,7 +26,7 @@ public class Interface extends JPanel{
 private static final long serialVersionUID = 1L;
 	
 
-	public static Color[] CouleurJoueur = {Color.MAGENTA, Color.BLUE, Color.GREEN, Color.YELLOW} ;
+	public static Color[] CouleurJoueur = {Color.MAGENTA, Color.PINK, Color.GREEN, Color.YELLOW} ;
 	
 	
 	

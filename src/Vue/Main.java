@@ -2,6 +2,7 @@ package Vue;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
@@ -43,6 +44,8 @@ public class Main extends JPanel implements Observer{
 		int i = 0;
 		
 		for (char c : this.modl.partieEC.J_actif.main) { //on dessine toute la mainM dans la mainV
+			Font font = new Font("Verdana",Font.BOLD, 20); 
+		    g.setFont(font);
 			g.setColor(Interface.CouleurJoueur[this.modl.partieEC.J_actif.num_j]); 
 			
 			g.fillRect(i*dw/7, 0, dh, dw/7);

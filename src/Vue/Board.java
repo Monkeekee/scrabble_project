@@ -3,6 +3,7 @@ package Vue;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -83,6 +84,9 @@ public class Board extends JPanel implements Observer{
 		    	g.setColor(clr);
 		    	g.fillRect(i*c, j*c, c, c);
 		    	g.setColor(Color.BLACK);
+		    	
+		    	Font font = new Font("Verdana", Font.BOLD, 20); 
+		        g.setFont(font);
 		    	
 		    	if (cellule.selec && !cellule.checked) {
 		    		g.drawString("_", i*c+c/2, j*c + c/2);

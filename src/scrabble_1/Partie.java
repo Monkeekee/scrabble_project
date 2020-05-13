@@ -3,6 +3,7 @@ package scrabble_1;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 
@@ -35,7 +36,7 @@ public class Partie implements Serializable {
 
 	
 	
-	public ArrayList<String> MotJoues = new ArrayList<String>();
+	public HashSet<String> MotJoues = new HashSet<String>();
 	
 	
 	
@@ -86,7 +87,7 @@ public class Partie implements Serializable {
 	public String toString() {
 		String res = Integer.toString(this.NbrJoueur) + " joueurs, ";
 		if (!this.MotJoues.isEmpty()) {
-			res = res + this.MotJoues.get(0);
+			res = res + Integer.toString(this.MotJoues.size()) + " posés ";
 		}else {
 			res = res + "aucun mot";
 		}
@@ -185,11 +186,28 @@ public class Partie implements Serializable {
 		
 	}
 	
-	public boolean confirmerMot(int x1, int y1, int x2, int y2, Dictionnaire d) {
+	public boolean confirmerMot(int x1, int y1, int x2, int y2, Dictionnaire d) { //arbitre de la validité d'un mot
 		boolean res = false;
+		if (this.MotJoues.isEmpty()) {
+			if ( !(x1==x2 && x1==7) && !(y1 == y2 && y1 == 7)){
+				return false;
+			}
+		}
+
+		
 		String mot = this.motEntre(x1, y1, x2, y2);
-		if (d.existe(mot)) {
+		
+		if (mot.contains(" ")) {    //cas des jokers
+			for (int i=0; i<26; i++ ) {
+				String motTemp = mot.replace(" ", ""+Partie.lettres[i]);
+				if (d.existe(motTemp)) {
+					mot = motTemp;
+				}
+			}
+		}
+		if (d.existe(mot) && !this.MotJoues.contains(mot)) {
 				res=true;
+				this.MotJoues.add(mot);
 			}
 		return res;
 	}
