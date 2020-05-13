@@ -154,7 +154,7 @@ public class Partie implements Serializable {
 		
 		if (x1 == x2) { //sur la meme ligne
 			System.out.println("ligne");
-			for (int j=0; j<y2 - y1; j++) {
+			for (int j=0; j<=y2 - y1; j++) {
 				mot = mot + this.plateau.get(x1).get(y1+j);
 				System.out.println(this.plateau.get(x1).get(y1+j));
 				
@@ -164,7 +164,7 @@ public class Partie implements Serializable {
 		}
 		if (y1 == y2) { // sur la meme colone
 			System.out.println("colonne");
-			for (int i=0; i<x2 - x1; i++) {
+			for (int i=0; i<=x2 - x1; i++) {
 				mot = mot + this.plateau.get(x1+i).get(y1);
 				System.out.println(this.plateau.get(x1+i).get(y1));
 			}

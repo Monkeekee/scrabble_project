@@ -91,12 +91,12 @@ public class Controleur implements  ActionListener, MouseListener, KeyListener, 
 			
 			System.out.println(this.modl.partieEC.motEntre(x1, y1, x2, y2));
 			if (this.modl.confirmerMot(x1, y1, x2, y2)) {
-				System.out.print('a');
+				System.out.print("MOT OK");
 				this.modl.ActuTabScore(x1, y1, x2, y2);
 				this.modl.partieEC.checkmot(x1, y1, x2, y2);
 			}
 			else {
-				System.out.print('b');
+				System.out.print("MOT NAZE");
 				this.modl.SupprimerMot();
 			}
 			
