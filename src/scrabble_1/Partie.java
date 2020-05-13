@@ -278,11 +278,12 @@ public class Partie implements Serializable {
 				}else {
 					
 					points += this.PtsLettre.get(this.plateau.get(x1).get(j+y1).letter);
-					
+					System.out.println("ok");
 					
 				}
 			
 			}
+			points = points*multiplicateur;
 		}
 		if (y1 == y2) {
 			//System.out.println("Horizontal");
@@ -311,16 +312,17 @@ public class Partie implements Serializable {
 					}
 				}else {
 					
-						points += this.PtsLettre.get(this.plateau.get(i+x1).get(y1).letter);
+					points += this.PtsLettre.get(this.plateau.get(i+x1).get(y1).letter);
 					
 					
 				}
 			
 			}
+			points = points*multiplicateur;
 		}
 		//System.out.println(multiplicateur);
 		//System.out.println(points);
-		points = points*multiplicateur;
+		
 		//System.out.println(points);
 		return points;
 	}
