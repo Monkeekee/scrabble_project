@@ -148,4 +148,5 @@ public class Modele extends Observable{
 		this.partieEC.actuScore(x1, y1, x2, y2);
 		this.changeEtat();
 	}
+	
 }

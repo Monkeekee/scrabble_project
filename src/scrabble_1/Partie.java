@@ -501,9 +501,9 @@ public class Partie implements Serializable {
 		boolean res = false;
 		if (this.confirmerMot(x1, y1, x2, y2, d)) {
 			if(x1==x2) {
-				for (int i=y1; i <= y2; i++) {
-					if (this.isMotToucherV(x1, i)) {
-						int[] coord = this.MotToucherV(x1, i);
+				for (int i=0; i <= y2-y1; i++) {
+					if (this.isMotToucherV(x1, i+y1)) {
+						int[] coord = this.MotToucherV(x1, i+y1);
 						int X1 = coord[0];
 						int Y1 = coord[1];
 						int X2 = coord[2];
@@ -517,9 +517,9 @@ public class Partie implements Serializable {
 				}
 			}
 			if(y1==y2) {
-				for (int j=x1; j <= x2; j++) {
-					if (this.isMotToucherH(j, y1)) {
-						int[] coord = this.MotToucherH(j, y1);
+				for (int j=0; j <= x2-x1; j++) {
+					if (this.isMotToucherH(j+x1, y1)) {
+						int[] coord = this.MotToucherH(j+x1, y1);
 						int X1 = coord[0];
 						int Y1 = coord[1];
 						int X2 = coord[2];
