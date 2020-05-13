@@ -196,13 +196,13 @@ public class Partie implements Serializable {
 	
 	public void checkmot(int x1,int y1,int x2,int y2) {
 		if (x1 == x2) {
-			for (int i = y1 ; y1 <= y2 ; i++ ) {
-				this.plateau.get(x1).get(i).checked=true;
+			for (int j=0; j<=y2 - y1; j++) {
+				this.plateau.get(x1).get(j+y1).checked=true;
 			}
 		}
 		if (y2 == y1) {
-			for (int i = x1 ; x1 <= x2 ; i++ ) {
-				this.plateau.get(i).get(y1).checked=true;
+			for (int i = 0 ; i <=x2 - x1 ; i++ ) {
+				this.plateau.get(i+x1).get(y1).checked=true;
 			}
 		}
 	}
