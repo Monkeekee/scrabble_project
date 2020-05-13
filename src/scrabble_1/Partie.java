@@ -209,23 +209,29 @@ public class Partie implements Serializable {
 	
 	public void actuScore(int x1, int y1, int x2, int y2) {
 		this.J_actif.score+=this.ptsMot(x1, y1, x2, y2);
-		char dir;
+		
 		if (x1==x2) {
-			dir='V';
+			
 			if(y2-y1==7) {
 				this.J_actif.score += 50;
 			}
 			for (int j=0; j<=y2 - y1; j++) {
-				this.J_actif.score += this.ptsMot(this.Touchemot(x1, j+y1, dir)[0], this.Touchemot(x1, j+y1, dir)[2], this.Touchemot(x1, j+y1, dir)[1], this.Touchemot(x1, j+y1, dir)[3]);
+				if (this.isMotToucherV(x1, j+y1)) {
+					this.J_actif.score += this.ptsMot(this.MotToucherV(x1, j+y1)[0],this.MotToucherV(x1, j+y1)[1],this.MotToucherV(x1, j+y1)[2],this.MotToucherV(x1, j+y1)[3]);
+				}
+				
 			}
 		}
 		if (y1==y2) {
-			dir='H';
+			
 			if(x2-x1==7) {
 				this.J_actif.score += 50;
 			}
 			for (int i = 0 ; i <= x2-x1 ; i++ ) {
-				this.J_actif.score += this.ptsMot(this.Touchemot(i+x1, y1, dir)[0], this.Touchemot(i+x1, y1, dir)[2], this.Touchemot(i+x1, y1, dir)[1], this.Touchemot(i+x1, y1, dir)[3]);
+				if (this.isMotToucherH(i+x1, y1)) {
+					this.J_actif.score += this.ptsMot(this.MotToucherH(i+x1,y1)[0],this.MotToucherH(i+x1,y1)[1],this.MotToucherH(i+x1,y1)[2],this.MotToucherH(i+x1,y1)[3]);
+				}
+				
 			}
 		}
 
