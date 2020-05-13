@@ -485,6 +485,52 @@ public class Partie implements Serializable {
 			return false;
 		}
 	}
+	
+	public boolean Confirmation(Dictionnaire d) {
+		int[] coo = this.detectionMot();
+		int x1 = coo[0];
+		int y1 = coo[1];
+		int x2 = coo[2];
+		int y2 = coo[3];
+		boolean res = false;
+		if (this.confirmerMot(x1, y1, x2, y2, d)) {
+			if(x1==x2) {
+				for (int i=y1; i <= y2; i++) {
+					if (this.isMotToucherV(x1, i)) {
+						int[] coord = this.MotToucherV(x1, i);
+						int X1 = coord[0];
+						int Y1 = coord[1];
+						int X2 = coord[2];
+						int Y2 = coord[3];
+						if (this.confirmerMot(X1, Y1, X2, Y2, d)) {
+							res = true;
+						}else {
+							return false;
+						}
+					}
+				}
+			}
+			if(y1==y2) {
+				for (int j=x1; j <= x2; j++) {
+					if (this.isMotToucherH(j, y1)) {
+						int[] coord = this.MotToucherH(j, y1);
+						int X1 = coord[0];
+						int Y1 = coord[1];
+						int X2 = coord[2];
+						int Y2 = coord[3];
+						if (this.confirmerMot(X1, Y1, X2, Y2, d)) {
+							res = true;
+						}else {
+							return false;
+						}
+					}
+				}
+			}
+		}else {
+			return false;
+		}
+		return res;
+	}
 }
 
 
