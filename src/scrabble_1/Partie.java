@@ -153,7 +153,7 @@ public class Partie implements Serializable {
 		String mot = "";
 		
 		if (x1 == x2) { //sur la meme ligne
-			System.out.println("ligne");
+			//System.out.println("ligne");
 			for (int j=0; j<=y2 - y1; j++) {
 				mot = mot + this.plateau.get(x1).get(y1+j);
 				System.out.println(this.plateau.get(x1).get(y1+j));
@@ -163,7 +163,7 @@ public class Partie implements Serializable {
 			}
 		}
 		if (y1 == y2) { // sur la meme colone
-			System.out.println("colonne");
+			//System.out.println("colonne");
 			for (int i=0; i<=x2 - x1; i++) {
 				mot = mot + this.plateau.get(x1+i).get(y1);
 				System.out.println(this.plateau.get(x1+i).get(y1));
@@ -215,8 +215,8 @@ public class Partie implements Serializable {
 			if(y2-y1==7) {
 				this.J_actif.score += 50;
 			}
-			for (int i = y1 ; y1 <= y2 ; i++ ) {
-				this.J_actif.score += this.ptsMot(this.Touchemot(x1, i, dir)[0], this.Touchemot(x1, i, dir)[2], this.Touchemot(x1, i, dir)[1], this.Touchemot(x1, i, dir)[3]);
+			for (int j=0; j<=y2 - y1; j++) {
+				this.J_actif.score += this.ptsMot(this.Touchemot(x1, j+y1, dir)[0], this.Touchemot(x1, j+y1, dir)[2], this.Touchemot(x1, j+y1, dir)[1], this.Touchemot(x1, j+y1, dir)[3]);
 			}
 		}
 		if (y1==y2) {
@@ -224,8 +224,8 @@ public class Partie implements Serializable {
 			if(x2-x1==7) {
 				this.J_actif.score += 50;
 			}
-			for (int i = x1 ; x1 <= x2 ; i++ ) {
-				this.J_actif.score += this.ptsMot(this.Touchemot(i, y1, dir)[0], this.Touchemot(i, y1, dir)[2], this.Touchemot(i, y1, dir)[1], this.Touchemot(i, y1, dir)[3]);
+			for (int i = 0 ; i <= x2-x1 ; i++ ) {
+				this.J_actif.score += this.ptsMot(this.Touchemot(i+x1, y1, dir)[0], this.Touchemot(i+x1, y1, dir)[2], this.Touchemot(i+x1, y1, dir)[1], this.Touchemot(i+x1, y1, dir)[3]);
 			}
 		}
 
@@ -235,23 +235,23 @@ public class Partie implements Serializable {
 		int points = 0;
 		int multiplicateur = 1;
 		if (x1 == x2) {
-			for (int i = y1 ; y1 <= y2 ; i++ ) {
-				if(this.plateau.get(x1).get(i).checked==false) {
-					if(Modele.Plateau[x1][i]==1) {
-						points += this.PtsLettre.get(this.plateau.get(x1).get(i).letter)*2;
+			for (int j=0; j<=y2 - y1; j++) {
+				if(this.plateau.get(x1).get(j+y1).checked==false) {
+					if(Modele.Plateau[x1][j+y1]==1) {
+						points += this.PtsLettre.get(this.plateau.get(x1).get(j+y1).letter)*2;
 					}
-					if(Modele.Plateau[x1][i]==3) {
-						points += this.PtsLettre.get(this.plateau.get(x1).get(i).letter)*3;
+					if(Modele.Plateau[x1][j+y1]==3) {
+						points += this.PtsLettre.get(this.plateau.get(x1).get(j+y1).letter)*3;
 					}
-					if(Modele.Plateau[x1][i]==2) {
+					if(Modele.Plateau[x1][j+y1]==2) {
 						multiplicateur = 2;
 					}
-					if(Modele.Plateau[x1][i]==4) {
+					if(Modele.Plateau[x1][j+y1]==4) {
 						multiplicateur = 3;
 					}
 				}else {
-					if(Modele.Plateau[x1][i]==0) {
-						points += this.PtsLettre.get(this.plateau.get(x1).get(i).letter);
+					if(Modele.Plateau[x1][j+y1]==0) {
+						points += this.PtsLettre.get(this.plateau.get(x1).get(j+y1).letter);
 					}
 					
 				}
@@ -259,22 +259,22 @@ public class Partie implements Serializable {
 			}
 		}
 		if (y1 == y2) {
-			for (int i = x1 ; x1 <= x2 ; i++ ) {
-				if(this.plateau.get(i).get(y1).checked==false) {
-					if(Modele.Plateau[i][y1]==1) {
+			for (int i=0; i<=x2 - x1; i++) {
+				if(this.plateau.get(i+x1).get(y1).checked==false) {
+					if(Modele.Plateau[i+x1][y1]==1) {
 						points += this.PtsLettre.get(this.plateau.get(i).get(y1).letter)*2;
 					}
-					if(Modele.Plateau[i][y1]==3) {
+					if(Modele.Plateau[i+x1][y1]==3) {
 						points += this.PtsLettre.get(this.plateau.get(i).get(y1).letter)*3;
 					}
-					if(Modele.Plateau[i][y1]==2) {
+					if(Modele.Plateau[i+x1][y1]==2) {
 						multiplicateur = 2;
 					}
-					if(Modele.Plateau[i][y1]==4) {
+					if(Modele.Plateau[i+x1][y1]==4) {
 						multiplicateur = 3;
 					}
 				}else {
-					if(Modele.Plateau[i][y1]==0) {
+					if(Modele.Plateau[i+x1][y1]==0) {
 						points += this.PtsLettre.get(this.plateau.get(i).get(y1).letter);
 					}
 					
