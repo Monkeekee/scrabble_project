@@ -232,6 +232,9 @@ public class Partie implements Serializable {
 	}
 	
 	public int ptsMot(int x1,int y1, int x2,int y2) {
+		if(x1==-1) {
+			return 0;
+		}
 		int points = 0;
 		int multiplicateur = 1;
 		if (x1 == x2) {
@@ -298,25 +301,26 @@ public class Partie implements Serializable {
 		if (direction == 'H') {
 			if (this.plateau.get(x).get(y+1).occupied) {
 				y2+=1;
-				this.Touchemot(x, y2, 'H');
+				return this.Touchemot(x, y2, 'H');
 			}
 			if(this.plateau.get(x).get(y-1).occupied) {
 				y1+=-1;
-				this.Touchemot(x, y1, 'H');
+				return this.Touchemot(x, y1, 'H');
 			}
 		}
 		if (direction == 'V') {
 			if (this.plateau.get(x+1).get(y).occupied) {
 				x2+=1;
-				this.Touchemot(x2, y, 'V');
+				return this.Touchemot(x2, y, 'V');
 			}
 			if(this.plateau.get(x-1).get(y).occupied) {
 				x1+=-1;
-				this.Touchemot(x1, y, 'V');
+				return this.Touchemot(x1, y, 'V');
 			}
 		}
 		if ( x1==x2 && y1==y2) {
-			return null;
+			int[] coo = {-1,-1,-1,-1};
+			return coo;
 		}
 		int [] coo= {x1,x2,y1,y2};
 		return coo;
